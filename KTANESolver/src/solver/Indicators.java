@@ -22,8 +22,7 @@ public class Indicators {
 	
 	// Sobre o serial
 	public boolean hasVowel() {
-		// TODO: Logica que retorne se ha ou nao vogal no serial
-		return true;
+		return serial.contains("a") || serial.contains("e") || serial.contains("o") || serial.contains("u"); 
 	}
 	
 	public boolean lastIsEven() {
