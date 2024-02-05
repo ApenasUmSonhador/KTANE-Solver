@@ -1,0 +1,29 @@
+# Arquivos de compilação
+*.class
+
+# Arquivos JAR
+*.jar
+
+# Arquivos de dependência do Maven
+target/
+
+# Arquivos de configuração do Eclipse
+.classpath
+.project
+.settings/
+
+# Arquivos de configuração do IntelliJ
+.idea/
+
+# Arquivos de log
+*.log
+
+# Arquivos de backup
+*~
+
+# Arquivos de cache
+.cache/
+
+# Arquivos de saída do Maven
+log/
+target/
