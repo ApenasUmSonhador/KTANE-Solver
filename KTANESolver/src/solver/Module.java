@@ -1,5 +1,7 @@
 package solver;
 
 public interface Module {
-	abstract void solve();
+	public abstract void setIndicators(Indicators indicators);
+
+	public abstract void solve();
 }
