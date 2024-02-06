@@ -1,27 +1,27 @@
 package solver;
 
 /*
- * Classe responsavel por armazenas estados uteis
- * sobre a bomba para consultas futuras,
- * utilizadas nos modulos:
- * Wires, Button, Genius e Complicated.
+ * Class responsible for storing useful states
+ * about the bomb for future queries,
+ * used in the modules:
+ * Wires, Button, Genius, and Complicated.
  */
 public class Indicators {
 	public final String serial;
-	public final boolean paralel;
+	public final boolean parallel;
 	public final boolean FRK;
 	public final boolean CAR;
 	public final int battery;
 
-	public Indicators(String serial, boolean paralel, boolean FRK, boolean CAR, int battery) {
+	public Indicators(String serial, boolean parallel, boolean FRK, boolean CAR, int battery) {
 		this.serial = serial;
-		this.paralel = paralel;
+		this.parallel = parallel;
 		this.FRK = FRK;
 		this.CAR = CAR;
 		this.battery = battery;
 	}
 
-	// Sobre o serial
+	// About the serial
 	public boolean hasVowel() {
 		return serial.contains("a") || serial.contains("e") || serial.contains("i") || serial.contains("o")
 				|| serial.contains("u");
@@ -38,12 +38,12 @@ public class Indicators {
 		return lastIsEven;
 	}
 
-	// Sobre portas paralelas
-	public boolean hasParalel() {
-		return paralel;
+	// About parallel ports
+	public boolean hasParallel() {
+		return parallel;
 	}
 
-	// Sobre indicadores luminosos
+	// About indicator lights
 	public boolean hasFRK() {
 		return FRK;
 	}
@@ -52,8 +52,8 @@ public class Indicators {
 		return CAR;
 	}
 
-	// Sobre o numero de pilhas
-	public int getbattery() {
+	// About the number of batteries
+	public int getBattery() {
 		return battery;
 	}
 }
