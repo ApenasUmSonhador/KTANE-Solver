@@ -23,7 +23,7 @@ public class BombFactory {
         return indicators;
     }
 
-    // set the bomb modules
+    // Set the bomb modules
     public static Module[] createModules() {
         System.out.println("Digite o numero de modulos:");
         int n = Integer.parseInt(Main.LerEntrada());
