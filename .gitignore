@@ -8,6 +8,7 @@
 target/
 
 # Arquivos de configuração do Eclipse
+.metadata/
 .classpath
 .project
 .settings/
