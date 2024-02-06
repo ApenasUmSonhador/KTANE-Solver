@@ -1,8 +1,11 @@
 package solver;
 
+import java.util.Map;
+import java.util.HashMap;
+
 public class Wires implements Module {
 	private Indicators indicators;
-	private Dictionary wires = new Hashtable();
+	private Map<String, Integer> wires = new HashMap<>();
 	private String lastWire;
 
 	public void setWires(int n) {
@@ -57,11 +60,11 @@ public class Wires implements Module {
 				System.out.println("Corte o último fio.");
 			}
 		} else if (n == 4) {
-			//TODO: Wire cutting logic
+			// TODO: Wire cutting logic
 		} else if (n == 5) {
-			//TODO: Wire cutting logic
+			// TODO: Wire cutting logic
 		} else if (n == 6) {
-			//TODO: Wire cutting logic
+			// TODO: Wire cutting logic
 		}
 	}
 }
