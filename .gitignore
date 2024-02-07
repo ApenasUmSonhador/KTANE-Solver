@@ -12,6 +12,7 @@ target/
 .classpath
 .project
 .settings/
+.gitignore
 
 # Arquivos de configuração do IntelliJ
 .idea/
