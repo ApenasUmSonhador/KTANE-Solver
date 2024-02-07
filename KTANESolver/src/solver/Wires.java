@@ -70,7 +70,7 @@ public class Wires implements Module {
 				} else {
 					System.out.println("Corte o último fio.");
 				}
-				break
+				break;
 			case 4:
 				if(wires.get("vermelho") > 1 && lastIsOdd) {
 					System.out.println("Corte o último fio vermelho.");
@@ -83,7 +83,7 @@ public class Wires implements Module {
 				} else {
 					System.out.println("Corte o segundo fio.");
 				}
-				break
+				break;
 			case 5:
 				if (lastWire.equals("preto") && lastIsOdd) {
 					System.out.println("Corte o quarto fio.");
@@ -94,7 +94,7 @@ public class Wires implements Module {
 				} else {
 					System.out.println("Corte o primeiro fio.");
 				}
-				break
+				break;
 			case 6:
 				if (!wires.containsKey("amarelo") && lastIsOdd) {
 					System.out.println("Corte o terceiro fio.");
@@ -105,7 +105,7 @@ public class Wires implements Module {
 				} else {
 					System.out.println("Corte o quarto fio.");
 				}
-				break
+				break;
 		}
 	}
 }
