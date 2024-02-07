@@ -1,69 +1,60 @@
 package solver;
 
-
 /*
- * Classe responsavel por armazenas estados uteis
- * sobre a bomba para consultas futuras,
- * utilizadas nos modulos:
- * Wires, Button, Genius e Complicated.
+ * Class responsible to store information about the bomb's indicators
+ * Capable of storing the serial, parallel ports, FRK, CAR, and the number of batteries
+ * Used in Main to set the bomb indicators
+ * Used in the Wire, Button, Genius, and Complicated modules
+ * Uses the Main class to read user input
  */
 public class Indicators {
-	private final String serial;
-	private final boolean paralel;
-	private final boolean FRK;
-	private final boolean CAR;
-	private final int battery;
-	private static int errors = 0;
-	
-	public Indicators(String serial, boolean paralel, boolean FRK, boolean CAR, int battery) {
+	public final String serial;
+	public final boolean parallel;
+	public final boolean FRK;
+	public final boolean CAR;
+	public final int battery;
+
+	public Indicators(String serial, boolean parallel, boolean FRK, boolean CAR, int battery) {
 		this.serial = serial;
-		this.paralel = paralel;
+		this.parallel = parallel;
 		this.FRK = FRK;
 		this.CAR = CAR;
 		this.battery = battery;
 	}
-	
-	// Sobre o serial
+
+	// About the serial
 	public boolean hasVowel() {
-		return serial.contains("a") || serial.contains("e") || serial.contains("i") || serial.contains("o") || serial.contains("u"); 
+		return serial.contains("a") || serial.contains("e") || serial.contains("i") || serial.contains("o")
+				|| serial.contains("u");
 	}
-	
+
 	public boolean lastIsEven() {
-		
 		boolean lastIsEven = false;
 		String[] numbers = serial.split("\\D+");
 		int lastIndex = numbers.length - 1;
-		if (numbers[lastIndex].equals("2") || numbers[lastIndex].equals("4") || numbers[lastIndex].equals("6") || numbers[lastIndex].equals("8") || numbers[lastIndex].equals("0")) {
+		if (numbers[lastIndex].equals("2") || numbers[lastIndex].equals("4") || numbers[lastIndex].equals("6")
+				|| numbers[lastIndex].equals("8") || numbers[lastIndex].equals("0")) {
 			lastIsEven = true;
 		}
 		return lastIsEven;
 	}
-	
-	// Sobre portas paralelas
-	public boolean hasParalel() {
-		return paralel;
+
+	// About parallel ports
+	public boolean hasParallel() {
+		return parallel;
 	}
-	
-	// Sobre indicadores luminosos
+
+	// About indicator lights
 	public boolean hasFRK() {
 		return FRK;
 	}
-	
+
 	public boolean hasCAR() {
 		return CAR;
 	}
-	
-	// Sobre o numero de pilhas
-	public int getbattery() {
+
+	// About the number of batteries
+	public int getBattery() {
 		return battery;
-	}
-	
-	// Sobre erros
-	public static void error() {
-		errors++;
-	}
-	
-	public int geterrors() {
-		return errors;
 	}
 }
