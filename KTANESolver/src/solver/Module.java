@@ -1,7 +1,9 @@
 package solver;
 
 public interface Module {
-	public abstract void setIndicators(Indicators indicators);
+	// Set the bomb usefull indicators
+	private abstract void setIndicators(Indicators indicators);
 
+	// Solve the bomb module
 	public abstract void solve();
 }
