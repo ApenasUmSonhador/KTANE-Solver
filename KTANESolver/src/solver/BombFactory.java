@@ -65,6 +65,10 @@ public class BombFactory {
                 case "words":
                     modules[i] = new Words();
                     break;
+                default:
+                    System.out.println("Nome do módulo inválido. Por favor, digite novamente.");
+                    i--;
+                    break;
             }
         }
         return modules;
