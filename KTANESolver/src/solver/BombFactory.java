@@ -31,28 +31,40 @@ public class BombFactory {
         for (int i = 0; i < n; i++) {
             System.out.println("Digite o nome do modulo " + (i + 1) + ":");
             String moduleName = Main.LerEntrada();
-            if (moduleName.equals("button")) {
-                modules[i] = new Button();
-            } else if (moduleName.equals("complicated")) {
-                modules[i] = new Complicated();
-            } else if (moduleName.equals("genius")) {
-                modules[i] = new Genius();
-            } else if (moduleName.equals("Knobs")) {
-                modules[i] = new Knobs();
-            } else if (moduleName.equals("maze")) {
-                modules[i] = new Maze();
-            } else if (moduleName.equals("memory")) {
-                modules[i] = new Memory();
-            } else if (moduleName.equals("morse")) {
-                modules[i] = new Morse();
-            } else if (moduleName.equals("password")) {
-                modules[i] = new Password();
-            } else if (moduleName.equals("sequence")) {
-                modules[i] = new Sequence();
-            } else if (moduleName.equals("wires")) {
-                modules[i] = new Wires();
-            } else if (moduleName.equals("words")) {
-                modules[i] = new Words();
+            switch (moduleName) {
+                case "button":
+                    modules[i] = new Button();
+                    break;
+                case "complicated":
+                    modules[i] = new Complicated();
+                    break;
+                case "genius":
+                    modules[i] = new Genius();
+                    break;
+                case "Knobs":
+                    modules[i] = new Knobs();
+                    break;
+                case "maze":
+                    modules[i] = new Maze();
+                    break;
+                case "memory":
+                    modules[i] = new Memory();
+                    break;
+                case "morse":
+                    modules[i] = new Morse();
+                    break;
+                case "password":
+                    modules[i] = new Password();
+                    break;
+                case "sequence":
+                    modules[i] = new Sequence();
+                    break;
+                case "wires":
+                    modules[i] = new Wires();
+                    break;
+                case "words":
+                    modules[i] = new Words();
+                    break;
             }
         }
         return modules;
