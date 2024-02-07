@@ -1,10 +1,11 @@
 package solver;
 
 /*
- * Class responsible for storing useful states
- * about the bomb for future queries,
- * used in the modules:
- * Wires, Button, Genius, and Complicated.
+ * Class responsible to store information about the bomb's indicators
+ * Capable of storing the serial, parallel ports, FRK, CAR, and the number of batteries
+ * Used in Main to set the bomb indicators
+ * Used in the Wire, Button, Genius, and Complicated modules
+ * Uses the Main class to read user input
  */
 public class Indicators {
 	public final String serial;

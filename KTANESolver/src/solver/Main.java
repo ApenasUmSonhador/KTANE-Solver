@@ -6,7 +6,9 @@ import java.util.Scanner;
  * Class responsible for communicating with the user
  * Capable of collecting data from all modules and indicators
  * Capable of assigning bomb indicators
- * Used in all modules, and uses all modules
+ * Used in all modules to read user input
+ * Uses the bombFactory to create bomb indicators and modules
+ * Uses the Module interface to solve bomb modules
  */
 public class Main {
 
