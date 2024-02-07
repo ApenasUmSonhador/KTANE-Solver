@@ -38,9 +38,9 @@ public class Button implements Module {
 	// method to set the bomb indicators
 	@Override
 	public void setIndicators(Indicators indicators) {
-		this.batteries = indicators.getBatteries();
-		this.CAR = indicators.isCAR();
-		this.FRK = indicators.isFRK();
+		this.batteries = indicators.getBattery();
+		this.CAR = indicators.hasCAR();
+		this.FRK = indicators.hasFRK();
 	}
 
 	// method to solve the module
