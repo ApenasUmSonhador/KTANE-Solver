@@ -21,12 +21,11 @@ public class Wires implements Module {
 	private Map<String, Integer> wires = new HashMap<>();
 	private String lastWire;
 
-	
 	private void setWires() {
 		// Store the number of wires
 		System.out.println("Digite o numero de fios:");
 		this.numberOfWires = Integer.parseInt(Main.LerEntrada());
-		
+
 		for (int i = 0; i < numberOfWires; i++) {
 			// Store the color of the wire
 			System.out.println("Digite a cor do fio " + (i + 1) + ":");
@@ -70,9 +69,9 @@ public class Wires implements Module {
 				} else {
 					System.out.println("Corte o último fio.");
 				}
-				break
+				break;
 			case 4:
-				if(wires.get("vermelho") > 1 && lastIsOdd) {
+				if (wires.get("vermelho") > 1 && lastIsOdd) {
 					System.out.println("Corte o último fio vermelho.");
 				} else if (lastWire.equals("amarelo") && !wires.containsKey("vermelho")) {
 					System.out.println("Corte o primeiro fio.");
@@ -83,7 +82,7 @@ public class Wires implements Module {
 				} else {
 					System.out.println("Corte o segundo fio.");
 				}
-				break
+				break;
 			case 5:
 				if (lastWire.equals("preto") && lastIsOdd) {
 					System.out.println("Corte o quarto fio.");
@@ -94,7 +93,7 @@ public class Wires implements Module {
 				} else {
 					System.out.println("Corte o primeiro fio.");
 				}
-				break
+				break;
 			case 6:
 				if (!wires.containsKey("amarelo") && lastIsOdd) {
 					System.out.println("Corte o terceiro fio.");
@@ -105,7 +104,7 @@ public class Wires implements Module {
 				} else {
 					System.out.println("Corte o quarto fio.");
 				}
-				break
+				break;
 		}
 	}
 }
