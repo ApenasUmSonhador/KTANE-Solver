@@ -47,7 +47,7 @@ public class Genius implements Module {
 		pattern = hasVowel ? patternWithVowel[errors] : patternWithoutVowel[errors];
 		System.out.println("Digite a cor:");
 		input = Main.LerEntrada();
-		while (input != "fim") {
+		while (!input.equals("fim")) {
 			if (input.equals("vermelho")) {
 				sequence += pattern[0];
 			} else if (input.equals("azul")) {
