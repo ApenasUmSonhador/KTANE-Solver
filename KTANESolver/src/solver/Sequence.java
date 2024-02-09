@@ -21,8 +21,8 @@ public class Sequence implements Module {
 	private Map<Integer, String> blackMap;
 
 	// Variables to store the wire color and letter
-	private String color;
-	private String letter;
+	private String color = "";
+	private String letter = "";
 
 	// Method to create the maps
 	private void setMaps() {
