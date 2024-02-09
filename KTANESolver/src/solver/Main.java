@@ -10,6 +10,7 @@ import java.util.Scanner;
  * Uses the bombFactory to create bomb indicators and modules
  * Uses the Module interface to solve bomb modules
  */
+
 public class Main {
 
 	@SuppressWarnings("resource")

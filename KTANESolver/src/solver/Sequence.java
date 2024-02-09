@@ -12,63 +12,64 @@ import java.util.HashMap;
  */
 
 public class Sequence implements Module {
-	// Variables to store the wire cutting sequence
-	private int red = 0;
-	private Map<Integer, String> redMap;
-	private int blue = 0;
-	private Map<Integer, String> blueMap;
-	private int black = 0;
-	private Map<Integer, String> blackMap;
+	// Constants to store the wire cutting sequence
+	private static final Map<Integer, String> redMap = new HashMap<Integer, String>() {
+		{
+			put(1, "c");
+			put(2, "b");
+			put(3, "a");
+			put(4, "ac");
+			put(5, "b");
+			put(6, "ac");
+			put(7, "abc");
+			put(8, "ab");
+			put(9, "b");
+		}
+	};
+	private static final Map<Integer, String> blueMap = new HashMap<Integer, String>() {
+		{
+			put(1, "b");
+			put(2, "ac");
+			put(3, "b");
+			put(4, "a");
+			put(5, "b");
+			put(6, "bc");
+			put(7, "c");
+			put(8, "ac");
+			put(9, "a");
+		}
+	};
+	private static final Map<Integer, String> blackMap = new HashMap<Integer, String>() {
+		{
+			put(1, "abc");
+			put(2, "ac");
+			put(3, "b");
+			put(4, "ac");
+			put(5, "b");
+			put(6, "bc");
+			put(7, "ab");
+			put(8, "c");
+			put(9, "c");
+		}
+	};
 
 	// Variables to store the wire color and letter
+	private int red = 0;
+	private int blue = 0;
+	private int black = 0;
 	private String color = "";
 	private String letter = "";
 
-	// Method to create the maps
-	private void setMaps() {
-		redMap = new HashMap<Integer, String>();
-		redMap.put(1, "c");
-		redMap.put(2, "b");
-		redMap.put(3, "a");
-		redMap.put(4, "ac");
-		redMap.put(5, "b");
-		redMap.put(6, "ac");
-		redMap.put(7, "abc");
-		redMap.put(8, "ab");
-		redMap.put(9, "b");
-
-		blueMap = new HashMap<Integer, String>();
-		blueMap.put(1, "b");
-		blueMap.put(2, "ac");
-		blueMap.put(3, "b");
-		blueMap.put(4, "a");
-		blueMap.put(5, "b");
-		blueMap.put(6, "bc");
-		blueMap.put(7, "c");
-		blueMap.put(8, "ac");
-		blueMap.put(9, "a");
-
-		blackMap = new HashMap<Integer, String>();
-		blackMap.put(1, "abc");
-		blackMap.put(2, "ac");
-		blackMap.put(3, "b");
-		blackMap.put(4, "ac");
-		blackMap.put(5, "b");
-		blackMap.put(6, "bc");
-		blackMap.put(7, "ab");
-		blackMap.put(8, "c");
-		blackMap.put(9, "c");
-	}
-
+	// No indicators to set
 	@Override
 	public void setIndicators(Indicators indicators) {
 		// Do nothing
 	}
 
+	// Method to solve the module
 	@Override
 	public void solve() {
 		System.out.println("Orientação de cima para baixo");
-		setMaps();
 		while (!(color.equals("fim") || letter.equals("fim"))) {
 			System.out.println("Digite a nova cor ou 'fim' para concluir:");
 			color = Main.LerEntrada();
