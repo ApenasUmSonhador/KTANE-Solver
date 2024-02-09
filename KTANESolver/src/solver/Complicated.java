@@ -10,9 +10,11 @@ package solver;
  */
 
 public class Complicated implements Module {
+	// Variables to store the bomb indicators
 	private boolean lastIsEven;
 	private boolean hasParallelPort;
 	private int batteries;
+	// Variables to store the wires, led and star data
 	private boolean[][] wires;
 	private boolean[] cutWires;
 	private int[] wiresValues;
@@ -52,7 +54,7 @@ public class Complicated implements Module {
 		}
 	}
 
-	// set the wires for the module
+	// Set the wires for the module
 	private void setWires() {
 		/*
 		 * matrix logic:
