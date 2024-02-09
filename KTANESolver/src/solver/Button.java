@@ -11,13 +11,13 @@ package solver;
 
 public class Button implements Module {
 	// variables to store the button data
-	String color;
-	String text;
+	private String color;
+	private String text;
 
 	// variables to store the bomb indicators
-	int batteries;
-	boolean FRK;
-	boolean CAR;
+	private int batteries;
+	private boolean FRK;
+	private boolean CAR;
 
 	// method to store the button data
 	private void setButton() {

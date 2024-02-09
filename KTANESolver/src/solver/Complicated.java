@@ -10,12 +10,12 @@ package solver;
  */
 
 public class Complicated implements Module {
-	boolean lastIsEven;
-	boolean hasParallelPort;
-	int batteries;
-	boolean[][] wires;
-	boolean[] cutWires;
-	int[] wiresValues;
+	private boolean lastIsEven;
+	private boolean hasParallelPort;
+	private int batteries;
+	private boolean[][] wires;
+	private boolean[] cutWires;
+	private int[] wiresValues;
 
 	// Set the indicators for the module
 	@Override
