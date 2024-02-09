@@ -14,8 +14,8 @@ public class Memory implements Module {
 	 * column[0] = position pressed
 	 * column[1] = number pressed
 	 */
-	int[][] matrix = new int[4][2];
-	int display;
+	private int[][] matrix = new int[4][2];
+	private int display;
 
 	// Method to set the bomb indicators
 	@Override

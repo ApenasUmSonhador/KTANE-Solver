@@ -2,6 +2,10 @@
 
 Este repositório contém um mini-projeto em Java que serve como um auxiliar para a solução do jogo "Keep Talking and Nobody Explodes".
 
+## Atenção!
+
+Este código faz referencia ao [Manual de Desarmamento de Bombas Versão 2-pt-BR](https://www.bombmanual.com/pt-BR/index.html)
+
 ## Descrição
 
 O objetivo deste projeto é fornecer uma ferramenta que ajude os jogadores a resolverem os desafios presentes no jogo "Keep Talking and Nobody Explodes". O jogo consiste em uma bomba virtual que precisa ser desarmada antes que o tempo acabe. Para isso, os jogadores precisam trabalhar em equipe, onde um jogador assume o papel do "Desarmador" e os outros jogadores assumem o papel de "Especialistas". Os especialistas possuem um manual com instruções para desarmar a bomba, enquanto o desarmador precisa seguir essas instruções para desativar os módulos da bomba.
