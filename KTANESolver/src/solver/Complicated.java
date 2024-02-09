@@ -27,6 +27,34 @@ public class Complicated implements Module {
 		this.batteries = indicators.getBattery();
 	}
 
+	// Set the wires for the module
+	private void setWires() {
+		/*
+			* matrix logic:
+			* line = wire position
+			* column = wire properties
+			*/
+		/*
+			* wire properties logic:
+			* [i][0] = red
+			* [i][1] = blue
+			* [i][2] = star
+			* [i][3] = led
+			*/
+		System.out.println("Digite o numero de fios: ");
+		wires = new boolean[Integer.parseInt(Main.LerEntrada())][4];
+		for (int i = 0; i < wires.length; i++) {
+			System.out.println("O fio " + (i + 1) + " tem vermelho? (s/n)");
+			wires[i][0] = Main.LerEntrada().equals("s");
+			System.out.println("O fio " + (i + 1) + " tem azul? (s/n)");
+			wires[i][1] = Main.LerEntrada().equals("s");
+			System.out.println("O fio " + (i + 1) + " tem estrela? (s/n)");
+			wires[i][2] = Main.LerEntrada().equals("s");
+			System.out.println("O fio " + (i + 1) + " tem LED? (s/n)");
+			wires[i][3] = Main.LerEntrada().equals("s");
+		}
+	}
+	
 	// Set values for wires
 	private void setWiresValues() {
 		/*
@@ -51,34 +79,6 @@ public class Complicated implements Module {
 			if (wires[i][3]) {
 				wiresValues[i] += 8;
 			}
-		}
-	}
-
-	// Set the wires for the module
-	private void setWires() {
-		/*
-		 * matrix logic:
-		 * line = wire position
-		 * column = wire properties
-		 */
-		/*
-		 * wire properties logic:
-		 * [i][0] = red
-		 * [i][1] = blue
-		 * [i][2] = star
-		 * [i][3] = led
-		 */
-		System.out.println("Digite o numero de fios: ");
-		wires = new boolean[Integer.parseInt(Main.LerEntrada())][4];
-		for (int i = 0; i < wires.length; i++) {
-			System.out.println("O fio " + (i + 1) + " tem vermelho? (s/n)");
-			wires[i][0] = Main.LerEntrada().equals("s");
-			System.out.println("O fio " + (i + 1) + " tem azul? (s/n)");
-			wires[i][1] = Main.LerEntrada().equals("s");
-			System.out.println("O fio " + (i + 1) + " tem estrela? (s/n)");
-			wires[i][2] = Main.LerEntrada().equals("s");
-			System.out.println("O fio " + (i + 1) + " tem LED? (s/n)");
-			wires[i][3] = Main.LerEntrada().equals("s");
 		}
 	}
 
