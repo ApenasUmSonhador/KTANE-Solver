@@ -1,5 +1,8 @@
 package solver;
 
+import java.util.Hashtable;
+import java.util.Map;
+
 /*
  * Class responsible for solving the Complicated Wires module
  * Capable of storing the wires, led and star data
@@ -15,7 +18,8 @@ public class Complicated implements Module {
 	private boolean hasParallelPort;
 	private int batteries;
 	// Variables to store the wires, led and star data
-	private boolean[][] wires;
+	private Map<String, Boolean> wire;
+	private Map<String, Boolean>[] wires;
 	private boolean[] cutWires;
 	private int[] wiresValues;
 
@@ -28,33 +32,24 @@ public class Complicated implements Module {
 	}
 
 	// Set the wires for the module
+	@SuppressWarnings("unchecked")
 	private void setWires() {
-		/*
-			* matrix logic:
-			* line = wire position
-			* column = wire properties
-			*/
-		/*
-			* wire properties logic:
-			* [i][0] = red
-			* [i][1] = blue
-			* [i][2] = star
-			* [i][3] = led
-			*/
 		System.out.println("Digite o numero de fios: ");
-		wires = new boolean[Integer.parseInt(Main.LerEntrada())][4];
+		wires = new Map[Integer.parseInt(Main.LerEntrada())];
 		for (int i = 0; i < wires.length; i++) {
+			wire = new Hashtable<String, Boolean>();
 			System.out.println("O fio " + (i + 1) + " tem vermelho? (s/n)");
-			wires[i][0] = Main.LerEntrada().equals("s");
+			wire.put("red", Main.LerEntrada().equals("s"));
 			System.out.println("O fio " + (i + 1) + " tem azul? (s/n)");
-			wires[i][1] = Main.LerEntrada().equals("s");
+			wire.put("blue", Main.LerEntrada().equals("s"));
 			System.out.println("O fio " + (i + 1) + " tem estrela? (s/n)");
-			wires[i][2] = Main.LerEntrada().equals("s");
+			wire.put("star", Main.LerEntrada().equals("s"));
 			System.out.println("O fio " + (i + 1) + " tem LED? (s/n)");
-			wires[i][3] = Main.LerEntrada().equals("s");
+			wire.put("led", Main.LerEntrada().equals("s"));
+			wires[i] = wire;
 		}
 	}
-	
+
 	// Set values for wires
 	private void setWiresValues() {
 		/*
@@ -67,16 +62,16 @@ public class Complicated implements Module {
 		wiresValues = new int[wires.length];
 		for (int i = 0; i < wires.length; i++) {
 			wiresValues[i] = 0;
-			if (wires[i][0]) {
+			if (wires[i].get("red")) {
 				wiresValues[i] += 1;
 			}
-			if (wires[i][1]) {
+			if (wires[i].get("blue")) {
 				wiresValues[i] += 2;
 			}
-			if (wires[i][2]) {
+			if (wires[i].get("star")) {
 				wiresValues[i] += 4;
 			}
-			if (wires[i][3]) {
+			if (wires[i].get("led")) {
 				wiresValues[i] += 8;
 			}
 		}
