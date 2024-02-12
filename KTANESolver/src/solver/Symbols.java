@@ -4,13 +4,11 @@ public class Symbols implements Module {
 
 	@Override
 	public void setIndicators(Indicators indicators) {
-		// TODO Auto-generated method stub
-		
+		// Do Nothing
 	}
 
 	@Override
 	public void solve() {
-		// TODO Auto-generated method stub
-		
+		// For each symbol, check /docs/Symbols.md
 	}
 }
