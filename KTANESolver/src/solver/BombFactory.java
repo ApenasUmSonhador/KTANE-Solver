@@ -59,6 +59,9 @@ public class BombFactory {
                 case "sequence":
                     modules[i] = new Sequence();
                     break;
+                case "symbols":
+                    modules[i] = new Symbols();
+                    break;
                 case "wires":
                     modules[i] = new Wires();
                     break;
