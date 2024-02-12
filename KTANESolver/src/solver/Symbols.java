@@ -29,10 +29,41 @@ public class Symbols implements Module {
 		// Do Nothing
 	}
 
+	private String Alias(String input) {
+		switch (input) {
+			case "balao":
+				return "baloon";
+			case "lambida":
+				return "lambda";
+			case "estrela":
+				return "star";
+			case "espiral":
+				return "spiral";
+			case "copyright":
+				return "copy";
+			case "nariz":
+				return "nose";
+			case "Snake":
+				return "3";
+			case "cobra":
+				return "3";
+			case "black star":
+				return "black";
+			case "estrela preta":
+				return "black";
+			case "quebra cabeça":
+				return "jigsaw";
+			case "quebra cabeca":
+				return "jigsaw";
+		}
+		return input;
+
+	}
+
 	private void setSymbols() {
 		for (int i = 0; i < 4; i++) {
 			System.out.println("Digite o simbolo " + (i + 1) + ":");
-			symbols[i] = Main.LerEntrada();
+			symbols[i] = Alias(Main.LerEntrada());
 		}
 	}
 
@@ -75,39 +106,38 @@ public class Symbols implements Module {
 				}
 			}
 			// 2.
-			for (int j = 0; j < 7; j++) {
-				if (solution[0] == 2) {
-					solution[0] = 1;
-				} else {
-					solution[0] = 0;
-				}
-				if (solution[1] == 2) {
-					solution[1] = 1;
-				} else {
-					solution[1] = 0;
-				}
-				if (solution[2] == 2) {
-					solution[2] = 1;
-				} else {
-					solution[2] = 0;
-				}
-				if (solution[3] == 2) {
-					solution[3] = 1;
-				} else {
-					solution[3] = 0;
-				}
-				if (solution[4] == 2) {
-					solution[4] = 1;
-				} else {
-					solution[4] = 0;
-				}
-				if (solution[5] == 2) {
-					solution[5] = 1;
-				} else {
-					solution[5] = 0;
-				}
+			if (solution[0] == 2) {
+				solution[0] = 1;
+			} else {
+				solution[0] = 0;
+			}
+			if (solution[1] == 2) {
+				solution[1] = 1;
+			} else {
+				solution[1] = 0;
+			}
+			if (solution[2] == 2) {
+				solution[2] = 1;
+			} else {
+				solution[2] = 0;
+			}
+			if (solution[3] == 2) {
+				solution[3] = 1;
+			} else {
+				solution[3] = 0;
+			}
+			if (solution[4] == 2) {
+				solution[4] = 1;
+			} else {
+				solution[4] = 0;
+			}
+			if (solution[5] == 2) {
+				solution[5] = 1;
+			} else {
+				solution[5] = 0;
 			}
 		}
+
 		// 3.
 		for (int i = 0; i < 6; i++) {
 			if (solution[i] == 1) {
@@ -128,7 +158,7 @@ public class Symbols implements Module {
 					break;
 				}
 			}
-			if (u == 4) {
+			if (u == 5) {
 				break;
 			}
 		}
