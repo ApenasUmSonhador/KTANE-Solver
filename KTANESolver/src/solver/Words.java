@@ -262,9 +262,9 @@ public class Words implements Module {
 
 	// Seek the word in the array
 	private String seekInArray(String word, String[] array) {
-		for (String s1 : words) {
-			for (String s2 : array) {
-				if (s1.equals(s2.toLowerCase())) {
+		for (String s1 : array) {
+			for (String s2 : words) {
+				if (s1.equals(s2.toUpperCase())) {
 					return s1;
 				}
 			}
