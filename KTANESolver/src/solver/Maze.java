@@ -4,8 +4,7 @@ public class Maze implements Module {
 
 	@Override
 	public void setIndicators(Indicators indicators) {
-		// TODO Auto-generated method stub
-		
+		// Do nothing
 	}
 
 	@Override
