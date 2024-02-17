@@ -17,12 +17,6 @@ public class Memory implements Module {
 	private int[][] matrix = new int[4][2];
 	private int display;
 
-	// Method to set the bomb indicators
-	@Override
-	public void setIndicators(Indicators indicators) {
-		// Do nothing
-	}
-
 	// Shows the instructions to press a position
 	private void pressByPosition(int position) {
 		System.out.println("Digite o número da posição " + position + " e aperte ele:");
@@ -35,7 +29,7 @@ public class Memory implements Module {
 
 	// Method to solve the module
 	@Override
-	public void solve() {
+	public void solve(Indicators indicators) {
 		// Stage 1
 		System.out.println("Digite o número do display:");
 		display = Integer.parseInt(Main.LerEntrada());

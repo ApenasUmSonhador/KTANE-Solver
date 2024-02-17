@@ -46,13 +46,13 @@ public class Wires implements Module {
 		}
 	}
 
-	@Override
-	public void setIndicators(Indicators indicators) {
+	private void setIndicators(Indicators indicators) {
 		this.lastIsOdd = !indicators.lastIsEven();
 	}
 
 	@Override
-	public void solve() {
+	public void solve(Indicators indicators) {
+		setIndicators(indicators);
 		setWires();
 		// 1. Check the number of wires
 		// 2. Check the colors of the wires

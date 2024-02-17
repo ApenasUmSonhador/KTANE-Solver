@@ -29,8 +29,7 @@ public class Main {
 
 		// Solve the bomb modules
 		for (Module module : modules) {
-			module.setIndicators(indicators);
-			module.solve();
+			module.solve(indicators);
 		}
 	}
 }

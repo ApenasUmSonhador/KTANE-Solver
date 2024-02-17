@@ -44,12 +44,6 @@ public class Morse implements Module {
 		}
 	};
 
-	// Set the indicators for the Morse module
-	@Override
-	public void setIndicators(Indicators indicators) {
-		// Do nothing
-	}
-
 	// Translate morse code to text
 	private String morseToText(String morse) {
 		for (String key : morseCode.keySet()) {
@@ -62,7 +56,7 @@ public class Morse implements Module {
 
 	// Solve the Morse module
 	@Override
-	public void solve() {
+	public void solve(Indicators indicators) {
 		System.out.println("Use . para ponto e - para traço ");
 		System.out.println("Anote as 2 primeiras letras");
 		System.out.println("Digite a primeira letra:");

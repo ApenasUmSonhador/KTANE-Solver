@@ -59,15 +59,9 @@ public class Password implements Module {
 	// Set letters per position
 	private List<String> letter;
 
-	// setIndicators is not used in this module
-	@Override
-	public void setIndicators(Indicators indicators) {
-		// Do nothing
-	}
-
 	// Solve the module
 	@Override
-	public void solve() {
+	public void solve(Indicators indicators) {
 		// Collect the last Letter
 		System.out.println("Digite as ultimas letras da palavra: ");
 		System.out.println("Quando acabar digite 'fim'");

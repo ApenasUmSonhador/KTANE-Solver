@@ -60,15 +60,9 @@ public class Sequence implements Module {
 	private String color = "";
 	private String letter = "";
 
-	// No indicators to set
-	@Override
-	public void setIndicators(Indicators indicators) {
-		// Do nothing
-	}
-
 	// Method to solve the module
 	@Override
-	public void solve() {
+	public void solve(Indicators indicators) {
 		System.out.println("Orientação de cima para baixo");
 		while (!(color.equals("fim") || letter.equals("fim"))) {
 			System.out.println("Digite a nova cor ou 'fim' para concluir:");

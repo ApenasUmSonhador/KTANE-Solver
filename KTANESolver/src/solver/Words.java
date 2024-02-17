@@ -54,12 +54,6 @@ public class Words implements Module {
 	private String button;
 	private String[] words;
 
-	// setIndicators is not used in this module
-	@Override
-	public void setIndicators(Indicators indicators) {
-		// Do nothing
-	}
-
 	// Set the button based on the display
 	private void setButton(String display) {
 		String top = "Digite o botão no topo ";
@@ -274,14 +268,14 @@ public class Words implements Module {
 
 	// Solve the module
 	@Override
-	public void solve() {
+	public void solve(Indicators indicators) {
 		System.out.println("Digite sem utilizar acentuacoes e caracteres especiais.");
 		setWords();
 		String solution = setSolution(button);
 		System.out.println("A palavra correta é: " + solution);
 		System.out.println("Módulo resolvido? (s/n)");
 		if (Main.LerEntrada().startsWith("n")) {
-			solve();
+			solve(indicators);
 		}
 	}
 }

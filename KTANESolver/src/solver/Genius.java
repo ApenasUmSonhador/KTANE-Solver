@@ -34,14 +34,14 @@ public class Genius implements Module {
 	private String input;
 
 	// Set the indicators for the module
-	@Override
-	public void setIndicators(Indicators indicators) {
+	private void setIndicators(Indicators indicators) {
 		hasVowel = indicators.hasVowel();
 	}
 
 	// Method to solve the module
 	@Override
-	public void solve() {
+	public void solve(Indicators indicators) {
+		setIndicators(indicators);
 		System.out.println("Digite o numero de erros: ");
 		errors = Integer.parseInt(System.console().readLine());
 		pattern = hasVowel ? patternWithVowel[errors] : patternWithoutVowel[errors];

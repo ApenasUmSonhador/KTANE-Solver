@@ -23,12 +23,6 @@ public class Symbols implements Module {
 	// The following is the line that contains the solution
 	private int[] solution = { 1, 1, 1, 1, 1, 1 };
 
-	// Set the indicators
-	@Override
-	public void setIndicators(Indicators indicators) {
-		// Do Nothing
-	}
-
 	private String Alias(String input) {
 		switch (input) {
 			case "balao":
@@ -165,7 +159,7 @@ public class Symbols implements Module {
 	}
 
 	@Override
-	public void solve() {
+	public void solve(Indicators indicators) {
 		// For each symbol, check /docs/Symbols.md
 		setSymbols();
 		int line = correctLine();

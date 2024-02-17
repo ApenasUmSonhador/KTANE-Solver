@@ -24,8 +24,7 @@ public class Complicated implements Module {
 	private int[] wiresValues;
 
 	// Set the indicators for the module
-	@Override
-	public void setIndicators(Indicators indicators) {
+	private void setIndicators(Indicators indicators) {
 		this.lastIsEven = indicators.lastIsEven();
 		this.hasParallelPort = indicators.hasParallel();
 		this.batteries = indicators.getBattery();
@@ -152,7 +151,8 @@ public class Complicated implements Module {
 
 	// Solve the module
 	@Override
-	public void solve() {
+	public void solve(Indicators indicators) {
+		setIndicators(indicators);
 		setWires();
 		setWiresValues();
 		setCutWires();

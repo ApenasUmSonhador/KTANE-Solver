@@ -19,6 +19,13 @@ public class Button implements Module {
 	private boolean FRK;
 	private boolean CAR;
 
+	// method to set the bomb indicators
+	private void setIndicators(Indicators indicators) {
+		this.batteries = indicators.getBattery();
+		this.CAR = indicators.hasCAR();
+		this.FRK = indicators.hasFRK();
+	}
+
 	// method to store the button data
 	private void setButton() {
 		System.out.println("Digite a cor do botão:");
@@ -35,17 +42,10 @@ public class Button implements Module {
 		System.out.println("Outra cor: solte o botão quando o temporizador tiver um 1 em qualquer posição.");
 	}
 
-	// method to set the bomb indicators
-	@Override
-	public void setIndicators(Indicators indicators) {
-		this.batteries = indicators.getBattery();
-		this.CAR = indicators.hasCAR();
-		this.FRK = indicators.hasFRK();
-	}
-
 	// method to solve the module
 	@Override
-	public void solve() {
+	public void solve(Indicators indicators) {
+		setIndicators(indicators);
 		setButton();
 		if (color.equals("azul") && text.equals("abortar")) {
 			holdButton();
