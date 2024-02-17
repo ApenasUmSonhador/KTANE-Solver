@@ -60,9 +60,7 @@ public class Morse implements Module {
 		System.out.println("Use . para ponto e - para traço ");
 		System.out.println("Anote as 2 primeiras letras");
 		System.out.println("Digite a primeira letra:");
-		String morse = Main.LerEntrada();
-		String text = "";
-		text += morseToText(morse);
+		String morse = Main.LerEntrada(), text = morseToText(morse);
 		switch (text) {
 			// frase - 3.515 MHz
 			case "f":

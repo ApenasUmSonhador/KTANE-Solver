@@ -11,12 +11,12 @@ package solver;
 
 public class Symbols implements Module {
 	// The following are the 6 lines of symbols on the module
-	private final static String[] line1 = { "baloon", "at", "lambda", "n", "alien", "x", ".c" };
-	private final static String[] line2 = { "e", "baloon", ".c", "spiral", "star", "x", "?" };
-	private final static String[] line3 = { "copy", "nose", "spiral", "xi", "r", "lambda", "star" };
-	private final static String[] line4 = { "6", "p", "bt", "alien", "xi", "?", "emoji" };
-	private final static String[] line5 = { "psi", "emoji", "bt", "c.", "p", "3", "black" };
-	private final static String[] line6 = { "6", "e", "jigsaw", "ae", "psi", "h", "omega" };
+	private final static String[] line1 = { "baloon", "at", "lambda", "n", "alien", "x", ".c" },
+			line2 = { "e", "baloon", ".c", "spiral", "star", "x", "?" },
+			line3 = { "copy", "nose", "spiral", "xi", "r", "lambda", "star" },
+			line4 = { "6", "p", "bt", "alien", "xi", "?", "emoji" },
+			line5 = { "psi", "emoji", "bt", "c.", "p", "3", "black" },
+			line6 = { "6", "e", "jigsaw", "ae", "psi", "h", "omega" };
 
 	// The following are the 4 symbols on the module
 	private String[] symbols = new String[4];

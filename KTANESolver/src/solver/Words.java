@@ -9,58 +9,55 @@ package solver;
 
 public class Words implements Module {
 	// The following are the order of the words on the module
-	private final static String[] pronto = { "SIM", "OK", "O QUE", "MEIO", "ESQUERDA", "APERTA", "CERTO", "ASSENTO" };
-	private final static String[] primeiro = { "ESQUERDA", "OK", "SIM", "MEIO", "NAO", "CERTO", "NADA", "HMMMMM",
-			"ACENTO", "PRONTO", "ASSENTO", "O QUE", "APERTA" };
-	private final static String[] nao = { "ASSENTO", "HMMMMM", "ACENTO", "PRIMEIRO", "O QUE", "PRONTO", "CERTO", "SIM",
-			"NADA", "ESQUERDA", "APERTA", "OK" };
-	private final static String[] assento = { "ACENTO", "CERTO", "OK", "MEIO" };
-	private final static String[] nada = { "HMMMMM", "CERTO", "OK", "MEIO", "SIM", "ASSENTO", "NAO", "APERTA",
-			"ESQUERDA", "O QUE", "ACENTO", "PRIMEIRO" };
-	private final static String[] sim = { "OK", "CERTO", "HMMMMM", "MEIO", "PRIMEIRO", "O QUE", "APERTA", "PRONTO",
-			"NADA" };
-	private final static String[] oQue = { "HMMMMM" };
-	private final static String[] hmmmmm = { "PRONTO", "NADA", "ESQUERDA", "O QUE", "OK", "SIM", "CERTO", "NAO",
-			"APERTA", "ASSENTO" };
-	private final static String[] esquerda = { "CERTO" };
-	private final static String[] certo = { "SIM", "NADA", "PRONTO", "APERTA", "NAO", "ACENTO", "O QUE" };
-	private final static String[] meio = { "ASSENTO", "PRONTO", "OK", "O QUE", "NADA", "APERTA", "NAO", "ACENTO",
-			"ESQUERDA" };
-	private final static String[] ok = { "MEIO", "NAO", "PRIMEIRO", "SIM", "HMMMMM", "NADA", "ACENTO" };
-	private final static String[] acento = { "HMMMMM", "NAO", "ASSENTO", "OK", "SIM", "ESQUERDA", "PRIMEIRO", "APERTA",
-			"O QUE" };
-	private final static String[] aperta = { "CERTO", "MEIO", "SIM", "PRONTO", "APERTA" };
-	private final static String[] voce = { "CLARO", "VOCE E", "OCE", "CE E", "PROXIMO", "AHA", "C E", "CENSO", "QUE" };
-	private final static String[] voceE = { "OCE", "PROXIMO", "SENSO", "AHA", "QUE", "BORA", "NAO SEI", "CENSO",
-			"VOCE", "REPETE", "CE E", "CLARO", "C E" };
-	private final static String[] oce = { "NAO SEI", "VOCE E", "AHA" };
-	private final static String[] cEEh = { "VOCE", "CE E" };
-	private final static String[] cEh = { "BORA", "REPETE", "C E", "AHA", "QUE", "CLARO", "OCE", "CENSO" };
-	private final static String[] repete = { "AHA", "CLARO", "PROXIMO", "QUE", "CE E", "C E", "NAO SEI", "BORA" };
-	private final static String[] naoSei = { "C E", "REPETE", "VOCE E", "CE E", "PROXIMO" };
-	private final static String[] que = { "VOCE", "CENSO", "CE E", "OCE", "REPETE", "BORA", "NAO SEI", "SENSO",
-			"VOCE E", "AHA", "C E", "PROXIMO" };
-	private final static String[] bora = { "CLARO", "AHA", "PROXIMO", "QUE", "OCE", "C E", "CE E", "CENSO", "SENSO",
-			"VOCE", "REPETE", "VOCE E", "NAO SEI" };
-	private final static String[] proximo = { "QUE", "AHA", "NAO SEI", "OCE", "CENSO", "CLARO" };
-	private final static String[] censo = { "VOCE E", "REPETE", "BORA", "NAO SEI", "VOCE", "C E", "CLARO", "QUE",
-			"CE E", "PROXIMO" };
-	private final static String[] claro = { "VOCE E", "BORA", "SENSO", "CE E", "VOCE", "CENSO", "AHA", "C E" };
-	private final static String[] senso = { "CE E", "PROXIMO", "REPETE", "C E", "CENSO", "BORA", "NAO SEI", "QUE",
-			"AHA", "VOCE" };
+	private final static String[] pronto = { "SIM", "OK", "O QUE", "MEIO", "ESQUERDA", "APERTA", "CERTO", "ASSENTO" },
+			primeiro = { "ESQUERDA", "OK", "SIM", "MEIO", "NAO", "CERTO", "NADA", "HMMMMM",
+					"ACENTO", "PRONTO", "ASSENTO", "O QUE", "APERTA" },
+			nao = { "ASSENTO", "HMMMMM", "ACENTO", "PRIMEIRO", "O QUE", "PRONTO", "CERTO", "SIM",
+					"NADA", "ESQUERDA", "APERTA", "OK" },
+			assento = { "ACENTO", "CERTO", "OK", "MEIO" },
+			nada = { "HMMMMM", "CERTO", "OK", "MEIO", "SIM", "ASSENTO", "NAO", "APERTA",
+					"ESQUERDA", "O QUE", "ACENTO", "PRIMEIRO" },
+			sim = { "OK", "CERTO", "HMMMMM", "MEIO", "PRIMEIRO", "O QUE", "APERTA", "PRONTO",
+					"NADA" },
+			oQue = { "HMMMMM" },
+			hmmmmm = { "PRONTO", "NADA", "ESQUERDA", "O QUE", "OK", "SIM", "CERTO", "NAO",
+					"APERTA", "ASSENTO" },
+			esquerda = { "CERTO" },
+			certo = { "SIM", "NADA", "PRONTO", "APERTA", "NAO", "ACENTO", "O QUE" },
+			meio = { "ASSENTO", "PRONTO", "OK", "O QUE", "NADA", "APERTA", "NAO", "ACENTO",
+					"ESQUERDA" },
+			ok = { "MEIO", "NAO", "PRIMEIRO", "SIM", "HMMMMM", "NADA", "ACENTO" },
+			acento = { "HMMMMM", "NAO", "ASSENTO", "OK", "SIM", "ESQUERDA", "PRIMEIRO", "APERTA",
+					"O QUE" },
+			aperta = { "CERTO", "MEIO", "SIM", "PRONTO", "APERTA" },
+			voce = { "CLARO", "VOCE E", "OCE", "CE E", "PROXIMO", "AHA", "C E", "CENSO", "QUE" },
+			voceE = { "OCE", "PROXIMO", "SENSO", "AHA", "QUE", "BORA", "NAO SEI", "CENSO",
+					"VOCE", "REPETE", "CE E", "CLARO", "C E" },
+			oce = { "NAO SEI", "VOCE E", "AHA" }, cEEh = { "VOCE", "CE E" },
+			cEh = { "BORA", "REPETE", "C E", "AHA", "QUE", "CLARO", "OCE", "CENSO" },
+			repete = { "AHA", "CLARO", "PROXIMO", "QUE", "CE E", "C E", "NAO SEI", "BORA" },
+			naoSei = { "C E", "REPETE", "VOCE E", "CE E", "PROXIMO" },
+			que = { "VOCE", "CENSO", "CE E", "OCE", "REPETE", "BORA", "NAO SEI", "SENSO",
+					"VOCE E", "AHA", "C E", "PROXIMO" },
+			bora = { "CLARO", "AHA", "PROXIMO", "QUE", "OCE", "C E", "CE E", "CENSO", "SENSO",
+					"VOCE", "REPETE", "VOCE E", "NAO SEI" },
+			proximo = { "QUE", "AHA", "NAO SEI", "OCE", "CENSO", "CLARO" },
+			censo = { "VOCE E", "REPETE", "BORA", "NAO SEI", "VOCE", "C E", "CLARO", "QUE",
+					"CE E", "PROXIMO" },
+			claro = { "VOCE E", "BORA", "SENSO", "CE E", "VOCE", "CENSO", "AHA", "C E" },
+			senso = { "CE E", "PROXIMO", "REPETE", "C E", "CENSO", "BORA", "NAO SEI", "QUE",
+					"AHA", "VOCE" };
 
 	// The following are the words on the module
-	private String display;
-	private String button;
+	private String display, button;
 	private String[] words;
 
 	// Set the button based on the display
 	private void setButton(String display) {
-		String top = "Digite o botão no topo ";
-		String mid = "Digite o botão no meio ";
-		String bot = "Digite o botão no fundo ";
-		String left = "esquerdo:";
-		String right = "direito:";
+		String top = "Digite o botão no topo ", mid = "Digite o botão no meio ", bot = "Digite o botão no fundo ",
+				left = "esquerdo:", right = "direito:";
+
+		// Perform the corresponding action based on the display
 		switch (display) {
 			case "sim":
 				System.out.println(mid + left);

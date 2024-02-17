@@ -25,8 +25,7 @@ public class Sequence implements Module {
 			put(8, "ab");
 			put(9, "b");
 		}
-	};
-	private static final Map<Integer, String> blueMap = new HashMap<Integer, String>() {
+	}, blueMap = new HashMap<Integer, String>() {
 		{
 			put(1, "b");
 			put(2, "ac");
@@ -38,8 +37,7 @@ public class Sequence implements Module {
 			put(8, "ac");
 			put(9, "a");
 		}
-	};
-	private static final Map<Integer, String> blackMap = new HashMap<Integer, String>() {
+	}, blackMap = new HashMap<Integer, String>() {
 		{
 			put(1, "abc");
 			put(2, "ac");
@@ -54,11 +52,8 @@ public class Sequence implements Module {
 	};
 
 	// Variables to store the wire color and letter
-	private int red = 0;
-	private int blue = 0;
-	private int black = 0;
-	private String color = "";
-	private String letter = "";
+	private int red = 0, blue = 0, black = 0;
+	private String color = "", letter = "";
 
 	// Method to solve the module
 	@Override

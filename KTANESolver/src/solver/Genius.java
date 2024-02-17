@@ -24,14 +24,13 @@ public class Genius implements Module {
 	 */
 	private static final String[][] patternWithVowel = { { "azul", "vermelho", "amarelo", "verde" },
 			{ "amarelo", "verde", "azul", "vermelho" },
-			{ "verde", "amarelo", "vermelho", "azul" } };
-	private static final String[][] patternWithoutVowel = { { "azul", "amarelo", "verde", "vermelho" },
-			{ "vermelho", "azul", "amarelo", "verde" },
-			{ "amarelo", "verde", "azul", "vermelho" } };
+			{ "verde", "amarelo", "vermelho", "azul" } },
+			patternWithoutVowel = { { "azul", "amarelo", "verde", "vermelho" },
+					{ "vermelho", "azul", "amarelo", "verde" },
+					{ "amarelo", "verde", "azul", "vermelho" } };
 	// Variable to select the correct pattern
 	private String[] pattern;
-	private String sequence = "Aperte: ";
-	private String input;
+	private String input, sequence = "Aperte: ";
 
 	// Method to solve the module
 	@Override

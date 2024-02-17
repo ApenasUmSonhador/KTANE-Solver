@@ -12,8 +12,7 @@ package solver;
 
 public class Button implements Module {
 	// variables to store the button data
-	private String color;
-	private String text;
+	private String color, text;
 
 	// method to store the button data
 	private void setButton() {

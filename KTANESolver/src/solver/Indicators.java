@@ -10,9 +10,7 @@ package solver;
 public class Indicators {
 	// Variables to store the bomb indicators
 	public final String serial;
-	public final boolean parallel;
-	public final boolean FRK;
-	public final boolean CAR;
+	public final boolean parallel, FRK, CAR;
 	public final int battery;
 
 	// Constructor to set the bomb indicators
