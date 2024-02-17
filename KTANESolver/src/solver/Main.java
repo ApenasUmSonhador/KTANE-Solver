@@ -13,10 +13,10 @@ import java.util.Scanner;
 
 public class Main {
 
-	@SuppressWarnings("resource")
 	public static String LerEntrada() {
-		Scanner sc = new Scanner(System.in);
-		return sc.nextLine().trim().toLowerCase();
+		try (Scanner sc = new Scanner(System.in)) {
+			return sc.nextLine().trim().toLowerCase();
+		}
 	}
 
 	public static void main(String[] args) {
