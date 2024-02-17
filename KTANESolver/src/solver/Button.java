@@ -5,7 +5,8 @@ package solver;
  * Capable of storing the button data
  * Capable of solving the module
  * Used in Main to solve the button module
- * Uses the Indicators class to set the bomb indicators
+ * Uses the Indicators class to know:
+ * if have FRK, CAR and Parallel port and how many batteries
  * Uses the Main class to read user input
  */
 
@@ -13,18 +14,6 @@ public class Button implements Module {
 	// variables to store the button data
 	private String color;
 	private String text;
-
-	// variables to store the bomb indicators
-	private int batteries;
-	private boolean FRK;
-	private boolean CAR;
-
-	// method to set the bomb indicators
-	private void setIndicators(Indicators indicators) {
-		this.batteries = indicators.getBattery();
-		this.CAR = indicators.hasCAR();
-		this.FRK = indicators.hasFRK();
-	}
 
 	// method to store the button data
 	private void setButton() {
@@ -45,15 +34,14 @@ public class Button implements Module {
 	// method to solve the module
 	@Override
 	public void solve(Indicators indicators) {
-		setIndicators(indicators);
 		setButton();
 		if (color.equals("azul") && text.equals("abortar")) {
 			holdButton();
-		} else if (batteries > 1 && text.equals("detonar")) {
+		} else if (indicators.getBattery() > 1 && text.equals("detonar")) {
 			System.out.println("Pressione e solte o botão.");
-		} else if (color.equals("branco") && CAR) {
+		} else if (color.equals("branco") && indicators.hasCAR()) {
 			holdButton();
-		} else if (batteries > 2 && FRK) {
+		} else if (indicators.getBattery() > 2 && indicators.hasFRK()) {
 			System.out.println("Pressione e solte o botão.");
 		} else if (color.equals("amarelo")) {
 			holdButton();

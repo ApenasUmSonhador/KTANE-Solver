@@ -8,27 +8,17 @@ import java.util.Map;
  * Capable of storing the wires, led and star data
  * Capable of solving the module
  * Used in Main to solve the Complicated module
- * Uses the Indicators class to set the bomb indicators
+ * Uses the Indicators class to know:
+ * if have FRK, CAR and Parallel port and how many batteries
  * Uses the Main class to read user input
  */
 
 public class Complicated implements Module {
-	// Variables to store the bomb indicators
-	private boolean lastIsEven;
-	private boolean hasParallelPort;
-	private int batteries;
 	// Variables to store the wires, led and star data
 	private Map<String, Boolean> wire;
 	private Map<String, Boolean>[] wires;
 	private boolean[] cutWires;
 	private int[] wiresValues;
-
-	// Set the indicators for the module
-	private void setIndicators(Indicators indicators) {
-		this.lastIsEven = indicators.lastIsEven();
-		this.hasParallelPort = indicators.hasParallel();
-		this.batteries = indicators.getBattery();
-	}
 
 	// Set the wires for the module
 	@SuppressWarnings("unchecked")
@@ -77,7 +67,7 @@ public class Complicated implements Module {
 	}
 
 	// Cut the wires based on the values
-	private void setCutWires() {
+	private void setCutWires(Indicators indicators) {
 		cutWires = new boolean[wires.length];
 		for (int i = 0; i < wires.length; i++) {
 			switch (wiresValues[i]) {
@@ -87,15 +77,15 @@ public class Complicated implements Module {
 					break;
 				// red wire
 				case 1:
-					cutWires[i] = lastIsEven ? true : false;
+					cutWires[i] = indicators.lastIsEven() ? true : false;
 					break;
 				// blue wire
 				case 2:
-					cutWires[i] = lastIsEven ? true : false;
+					cutWires[i] = indicators.lastIsEven() ? true : false;
 					break;
 				// red and blue wire
 				case 3:
-					cutWires[i] = lastIsEven ? true : false;
+					cutWires[i] = indicators.lastIsEven() ? true : false;
 					break;
 				// star wire
 				case 4:
@@ -103,7 +93,7 @@ public class Complicated implements Module {
 					break;
 				// red and star wire
 				case 5:
-					cutWires[i] = hasParallelPort ? true : false;
+					cutWires[i] = indicators.hasParallel() ? true : false;
 					break;
 				// blue and star wire
 				case 6:
@@ -111,7 +101,7 @@ public class Complicated implements Module {
 					break;
 				// red, blue and star wire
 				case 7:
-					cutWires[i] = hasParallelPort ? true : false;
+					cutWires[i] = indicators.hasParallel() ? true : false;
 					break;
 				// led wire
 				case 8:
@@ -119,27 +109,27 @@ public class Complicated implements Module {
 					break;
 				// red and led wire
 				case 9:
-					cutWires[i] = batteries > 1 ? true : false;
+					cutWires[i] = indicators.getBattery() > 1 ? true : false;
 					break;
 				// blue and led wire
 				case 10:
-					cutWires[i] = hasParallelPort ? true : false;
+					cutWires[i] = indicators.hasParallel() ? true : false;
 					break;
 				// red, blue and led wire
 				case 11:
-					cutWires[i] = lastIsEven ? true : false;
+					cutWires[i] = indicators.lastIsEven() ? true : false;
 					break;
 				// star and led wire
 				case 12:
-					cutWires[i] = batteries > 1 ? true : false;
+					cutWires[i] = indicators.getBattery() > 1 ? true : false;
 					break;
 				// red, star and led wire
 				case 13:
-					cutWires[i] = batteries > 1 ? true : false;
+					cutWires[i] = indicators.getBattery() > 1 ? true : false;
 					break;
 				// blue, star and led wire
 				case 14:
-					cutWires[i] = hasParallelPort ? true : false;
+					cutWires[i] = indicators.hasParallel() ? true : false;
 					break;
 				// red, blue, star and led wire
 				case 15:
@@ -152,10 +142,9 @@ public class Complicated implements Module {
 	// Solve the module
 	@Override
 	public void solve(Indicators indicators) {
-		setIndicators(indicators);
 		setWires();
 		setWiresValues();
-		setCutWires();
+		setCutWires(indicators);
 		String cut = "cut the wires: ";
 		for (int i = 0; i < cutWires.length; i++) {
 			if (cutWires[i]) {
