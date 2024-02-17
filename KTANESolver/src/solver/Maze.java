@@ -15,7 +15,7 @@ public class Maze implements Module {
 	// TODO: BFS algorithm to solve the maze
 
 	@Override
-	public void solve() {
+	public void solve(Indicators indicators) {
 		// TODO: Implement
 	}
 }
