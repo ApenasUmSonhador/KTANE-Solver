@@ -72,69 +72,53 @@ public class Complicated implements Module {
 		for (int i = 0; i < wires.length; i++) {
 			switch (wiresValues[i]) {
 				// white wire
-				case 0:
-					cutWires[i] = true;
-					break;
+				case 0 -> cutWires[i] = true;
+
 				// red wire
-				case 1:
-					cutWires[i] = indicators.lastIsEven() ? true : false;
-					break;
+				case 1 -> cutWires[i] = indicators.lastIsEven() ? true : false;
+
 				// blue wire
-				case 2:
-					cutWires[i] = indicators.lastIsEven() ? true : false;
-					break;
+				case 2 -> cutWires[i] = indicators.lastIsEven() ? true : false;
+
 				// red and blue wire
-				case 3:
-					cutWires[i] = indicators.lastIsEven() ? true : false;
-					break;
+				case 3 -> cutWires[i] = indicators.lastIsEven() ? true : false;
+
 				// star wire
-				case 4:
-					cutWires[i] = true;
-					break;
+				case 4 -> cutWires[i] = true;
+
 				// red and star wire
-				case 5:
-					cutWires[i] = indicators.hasParallel() ? true : false;
-					break;
+				case 5 -> cutWires[i] = indicators.hasParallel() ? true : false;
+
 				// blue and star wire
-				case 6:
-					cutWires[i] = false;
-					break;
+				case 6 -> cutWires[i] = false;
+
 				// red, blue and star wire
-				case 7:
-					cutWires[i] = indicators.hasParallel() ? true : false;
-					break;
+				case 7 -> cutWires[i] = indicators.hasParallel() ? true : false;
+
 				// led wire
-				case 8:
-					cutWires[i] = false;
-					break;
+				case 8 -> cutWires[i] = false;
+
 				// red and led wire
-				case 9:
-					cutWires[i] = indicators.getBattery() > 1 ? true : false;
-					break;
+				case 9 -> cutWires[i] = indicators.getBattery() > 1 ? true : false;
+
 				// blue and led wire
-				case 10:
-					cutWires[i] = indicators.hasParallel() ? true : false;
-					break;
+				case 10 -> cutWires[i] = indicators.hasParallel() ? true : false;
+
 				// red, blue and led wire
-				case 11:
-					cutWires[i] = indicators.lastIsEven() ? true : false;
-					break;
+				case 11 -> cutWires[i] = indicators.lastIsEven() ? true : false;
+
 				// star and led wire
-				case 12:
-					cutWires[i] = indicators.getBattery() > 1 ? true : false;
-					break;
+				case 12 -> cutWires[i] = indicators.getBattery() > 1 ? true : false;
+
 				// red, star and led wire
-				case 13:
-					cutWires[i] = indicators.getBattery() > 1 ? true : false;
-					break;
+				case 13 -> cutWires[i] = indicators.getBattery() > 1 ? true : false;
+
 				// blue, star and led wire
-				case 14:
-					cutWires[i] = indicators.hasParallel() ? true : false;
-					break;
+				case 14 -> cutWires[i] = indicators.hasParallel() ? true : false;
+
 				// red, blue, star and led wire
-				case 15:
-					cutWires[i] = false;
-					break;
+				case 15 -> cutWires[i] = false;
+
 			}
 		}
 	}

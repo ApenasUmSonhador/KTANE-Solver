@@ -130,18 +130,10 @@ public class Memory implements Module {
 		System.out.println("Digite o número do display:");
 		display = Integer.parseInt(Main.LerEntrada());
 		switch (display) {
-			case 1:
-				System.out.println("Pressione o número " + matrix[0][1]);
-				break;
-			case 2:
-				System.out.println("Pressione o número " + matrix[1][1]);
-				break;
-			case 3:
-				System.out.println("Pressione o número " + matrix[3][1]);
-				break;
-			case 4:
-				System.out.println("Precione o número " + matrix[2][1]);
-				break;
+			case 1 -> System.out.println("Pressione o número " + matrix[0][1]);
+			case 2 -> System.out.println("Pressione o número " + matrix[1][1]);
+			case 3 -> System.out.println("Pressione o número " + matrix[3][1]);
+			case 4 -> System.out.println("Precione o número " + matrix[2][1]);
 		}
 	}
 

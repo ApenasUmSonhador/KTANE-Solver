@@ -10,8 +10,8 @@ package solver;
 public class Words implements Module {
 	// The following are the order of the words on the module
 	private final static String[] pronto = { "SIM", "OK", "O QUE", "MEIO", "ESQUERDA", "APERTA", "CERTO", "ASSENTO" },
-			primeiro = { "ESQUERDA", "OK", "SIM", "MEIO", "NAO", "CERTO", "NADA", "HMMMMM",
-					"ACENTO", "PRONTO", "ASSENTO", "O QUE", "APERTA" },
+			primeiro = { "ESQUERDA", "OK", "SIM", "MEIO", "NAO", "CERTO", "NADA", "HMMMMM", "ACENTO", "PRONTO",
+					"ASSENTO", "O QUE", "APERTA" },
 			nao = { "ASSENTO", "HMMMMM", "ACENTO", "PRIMEIRO", "O QUE", "PRONTO", "CERTO", "SIM",
 					"NADA", "ESQUERDA", "APERTA", "OK" },
 			assento = { "ACENTO", "CERTO", "OK", "MEIO" },
