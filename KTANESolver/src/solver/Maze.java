@@ -1,11 +1,14 @@
 package solver;
 
 import java.util.HashMap;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
+import java.util.Set;
 
 public class Maze implements Module {
-	private List path;
+	private ArrayList<ArrayList<Integer>> matriz = new ArrayList<>();
+	private Set sawSet;
+	private ArrayList<Integer> path;
 	private int flag, start, end;
 	private Map<Integer,int[]> maze;
 	// Representation of the maze as a graph
@@ -398,9 +401,37 @@ public class Maze implements Module {
 		}
 	}
 
-	private List pathFinder(int start, int end, Map<Integer, int[]> maze, ) {
-		// TODO: Implement algorithm to solve the maze
-		return List;
+	private ArrayList<Integer> pathFinder(int start, int end, Map<Integer, int[]> maze, ArrayList<ArrayList<Integer>> matriz) {
+		/*Ideia
+		 * Conferir se matriz é vazia -> Se sim, inicializa com start
+		 * Conferir todos os vizinhos não visitados e criar path para cada um deles
+		 * Se não tiver vizinhos não vistados -> pop no path
+		 * Se chegar no end -> para e retorna o path
+		 * Se não -> Passa para proximo path -> Se chegar no ultimo, repete.
+		 */
+
+		if (matriz.isEmpty()) {
+			matriz.add(new ArrayList<Integer>(start));
+			sawSet.add(start);
+		}
+
+		for(int i = 0; i < matriz.size(); i++){
+			ArrayList<Integer> path = matriz.get(0);
+			matriz.remove(path);
+			int [] neighbors = maze.get(path.get(path.size()-1));
+			for(int j = 0; j < neighbors.length; j++){
+				if(!sawSet.contains(neighbors[j])){
+					path.add(neighbors[j]);
+					matriz.add(path);
+					path.remove(neighbors[j]);
+					sawSet.add(neighbors[j]);
+				}
+				if (neighbors[j] == end) {
+					return matriz.get(matriz.size()-1);
+				}
+			}
+		}
+		 return pathFinder(start, end, maze, matriz);
 	}
 
 	@Override
@@ -416,7 +447,7 @@ public class Maze implements Module {
 		System.out.println("Digite a coluna de fim (1-6):");
 		end += Integer.parseInt(Main.LerEntrada()); 
 
-		path = pathFinder(start,end, maze);
+		path = pathFinder(start,end, maze,matriz);
 		System.out.println("O caminho é:");
 		// TODO: Show to user the path
 	}
