@@ -4,7 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Maze implements Module {
-
+	private int flag;
+	private Map<Integer,int[]> maze;
 	// TODO: Represent the maze as a graph
 	private Map<Integer, int[]> maze1 = new HashMap<>() {
 		{
@@ -367,6 +368,35 @@ public class Maze implements Module {
 		}
 	};
 
+	private Map<Integer,int[]> setMaze(){
+		System.out.println("Digite a linha de um indicador (1-6):");
+		flag = (Integer.parseInt(Main.LerEntrada())-1) * 6;
+		System.out.println("Digite a coluna desse indicador (1-6):");
+		flag += Integer.parseInt(Main.LerEntrada());
+		
+		switch (flag) {
+			case 7 -> maze = maze1;
+			case 18 -> maze = maze1;
+			case 11 -> maze = maze2;
+			case 20 -> maze = maze2;
+			case 22 -> maze = maze3;
+			case 24 -> maze = maze3;
+			case 1 -> maze = maze4;
+			case 19 -> maze = maze4;
+			case 17 -> maze = maze5;
+			case 34 -> maze = maze5;
+			case 5 -> maze = maze6;
+			case 27 -> maze = maze6;
+			case 2 -> maze = maze7;
+			case 32 -> maze = maze7;
+			case 4 -> maze = maze8;
+			case 21 -> maze = maze8;
+			case 9 -> maze = maze9;
+			case 25 -> maze = maze9;
+		}
+		return maze;
+	}
+
 	private void BFS(int start, int end, Map<Integer, int[]> maze) {
 		// TODO: BFS algorithm to solve the maze
 	}
@@ -374,5 +404,6 @@ public class Maze implements Module {
 	@Override
 	public void solve(Indicators indicators) {
 		// TODO: Implement
+		final Map<Integer,int[]> maze = setMaze();
 	}
 }
