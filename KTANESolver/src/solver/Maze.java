@@ -1,12 +1,14 @@
 package solver;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Maze implements Module {
-	private int flag;
+	private List path;
+	private int flag, start, end;
 	private Map<Integer,int[]> maze;
-	// TODO: Represent the maze as a graph
+	// Representation of the maze as a graph
 	private Map<Integer, int[]> maze1 = new HashMap<>() {
 		{
 			put(1, new int[] { 2, 7 });
@@ -368,42 +370,54 @@ public class Maze implements Module {
 		}
 	};
 
-	private Map<Integer,int[]> setMaze(){
+	private void setMaze(){
 		System.out.println("Digite a linha de um indicador (1-6):");
 		flag = (Integer.parseInt(Main.LerEntrada())-1) * 6;
 		System.out.println("Digite a coluna desse indicador (1-6):");
 		flag += Integer.parseInt(Main.LerEntrada());
 		
 		switch (flag) {
-			case 7 -> maze = maze1;
-			case 18 -> maze = maze1;
-			case 11 -> maze = maze2;
-			case 20 -> maze = maze2;
-			case 22 -> maze = maze3;
-			case 24 -> maze = maze3;
-			case 1 -> maze = maze4;
-			case 19 -> maze = maze4;
-			case 17 -> maze = maze5;
-			case 34 -> maze = maze5;
-			case 5 -> maze = maze6;
-			case 27 -> maze = maze6;
-			case 2 -> maze = maze7;
-			case 32 -> maze = maze7;
-			case 4 -> maze = maze8;
-			case 21 -> maze = maze8;
-			case 9 -> maze = maze9;
-			case 25 -> maze = maze9;
+			case 7 -> this.maze = maze1;
+			case 18 -> this.maze = maze1;
+			case 11 -> this.maze = maze2;
+			case 20 -> this.maze = maze2;
+			case 22 -> this.maze = maze3;
+			case 24 -> this.maze = maze3;
+			case 1 -> this.maze = maze4;
+			case 19 -> this.maze = maze4;
+			case 17 -> this.maze = maze5;
+			case 34 -> this.maze = maze5;
+			case 5 -> this.maze = maze6;
+			case 27 -> this.maze = maze6;
+			case 2 -> this.maze = maze7;
+			case 32 -> this.maze = maze7;
+			case 4 -> this.maze = maze8;
+			case 21 -> this.maze = maze8;
+			case 9 -> this.maze = maze9;
+			case 25 -> this.maze = maze9;
 		}
-		return maze;
 	}
 
-	private void BFS(int start, int end, Map<Integer, int[]> maze) {
-		// TODO: BFS algorithm to solve the maze
+	private List pathFinder(int start, int end, Map<Integer, int[]> maze, ) {
+		// TODO: Implement algorithm to solve the maze
+		return List;
 	}
 
 	@Override
 	public void solve(Indicators indicators) {
-		// TODO: Implement
-		final Map<Integer,int[]> maze = setMaze();
+		setMaze();
+		
+		System.out.println("Digite a linha de início (1-6):");
+		start = (Integer.parseInt(Main.LerEntrada()) - 1) * 6;
+		System.out.println("Digite a coluna de início (1-6):");
+		start += Integer.parseInt(Main.LerEntrada()); 
+		System.out.println("Digite a linha de fim (1-6):");
+		end = (Integer.parseInt(Main.LerEntrada()) - 1) * 6;
+		System.out.println("Digite a coluna de fim (1-6):");
+		end += Integer.parseInt(Main.LerEntrada()); 
+
+		path = pathFinder(start,end, maze);
+		System.out.println("O caminho é:");
+		// TODO: Show to user the path
 	}
 }
