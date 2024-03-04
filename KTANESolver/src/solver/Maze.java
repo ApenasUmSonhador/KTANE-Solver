@@ -1,50 +1,375 @@
 package solver;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Maze implements Module {
 
-	// TODO: Represent the maze as a adjacency matrix
-	private int[][] maze1 = {
-			{ 2, 7 }, { 1, 3 }, { 2, 9 }, { 5, 10 }, { 4, 6 }, { 5 },
-			{ 1, 13 }, { 9, 14 }, { 3, 8 }, { 4, 11 }, { 10, 12 }, { 11, 18 },
-			{ 7, 14 }, { 8, 15 }, { 14, 21 }, { 17, 22 }, { 16, 18 }, { 17, 24 },
-			{ 13, 25 }, { 21 }, { 15, 20, 22 }, { 16, 21 }, { 24 }, { 18, 30 },
-			{ 19, 26, 31 }, { 25, 27 }, { 26, 33 }, { 29, 34 }, { 28 }, { 24, 36 },
-			{ 25, 32 }, { 31 }, { 27, 34 }, { 28, 33 }, { 36 }, { 30, 35 }
-	},
-			maze2 = {
-					{ 2 }, { 1, 3 }, { 2 }, { 5, 10 }, { 4, 6, 11 }, { 5 },
-					{ 8, 13 }, { 7, 2 }, { 10, 15 }, { 4, 9 }, { 5, 12 }, { 11, 18 },
-					{ 7, 19 }, { 15, 20 }, { 14, 8 }, { 17, 22 }, { 16, 18 }, { 12, 17, 24 },
-					{ 13, 20, 25 }, { 19, 14 }, { 22, 27 }, { 16, 21 }, { 29 }, { 18, 23, 30 },
-					{ 19, 31 }, { 32 }, { 21, 33 }, { 29, 34 }, { 23, 28 }, { 24, 36 },
-					{ 25 }, { 26, 33 }, { 27, 32 }, { 28, 35 }, { 34, 36 }, { 30, 35 }
-			},
-			maze3 = {
-					{ 2, 7 }, { 1, 3 }, { 2, 9 }, { 10 }, { 6, 11 }, { 5, 12 },
-					{ 1 }, { 14 }, { 3, 15 }, { 4 }, { 5, 10 }, { 6, 18 },
-					{ 14, 19 }, { 13, 20 }, { 9, 21 }, { 17, 22 }, { 16, 23 }, { 12, 24 },
-					{ 13, 25 }, { 14, 26 }, { 15, 27 }, { 16, 28 }, { 17, 29 }, { 18, 30 },
-					{ 19, 31 }, { 20, 27 }, { 21 }, { 22, 34 }, { 23, 35 }, { 24, 36 },
-					{ 25, 32 }, { 31, 33 }, { 32, 34 }, { 28, 33 }, { 29, 36 }, { 30, 35 }
-			},
-			maze4 = {
-					{ 2, 7 }, { 1, 8 }, { 4 }, { 3, 5 }, { 4, 6 }, { 5, 12 },
-					{ 1, 13 }, { 2, 14 }, { 10, 15 }, { 9, 11 }, { 10, 12 }, { 6, 11, 18 },
-					{ 7, 19 }, { 8, 15 }, { 8, 14 }, { 17, 22 }, { 16 }, { 12, 24 },
-					{ 13, 25 }, { 21 }, { 20, 22 }, { 14, 21, 23 }, { 22, 24 }, { 18, 23, 30 },
-					{ 19, 26, 31 }, { 25, 27 }, { 26, 28 }, { 27, 29 }, { 28, 35 }, { 24, 36 },
-					{ 25, 32 }, { 31, 33 }, { 32 }, { 35 }, { 29, 34 }, { 30 }
-			},
-			maze5 = {
-					{ 2 }, { 1, 3 }, { 2, 4 }, { 3, 5 }, { 4, 6, 11 }, { 5, 12 },
+	// TODO: Represent the maze as a graph
+	private Map<Integer, int[]> maze1 = new HashMap<>() {
+		{
+			put(1, new int[] { 2, 7 });
+			put(2, new int[] { 1, 3 });
+			put(3, new int[] { 2, 9 });
+			put(4, new int[] { 5, 11 });
+			put(5, new int[] { 4, 6 });
+			put(6, new int[] { 5 });
+			put(7, new int[] { 1, 13 });
+			put(8, new int[] { 9, 14 });
+			put(9, new int[] { 3, 8 });
+			put(10, new int[] { 4, 11 });
+			put(11, new int[] { 10, 12 });
+			put(12, new int[] { 11, 18 });
+			put(13, new int[] { 7, 19 });
+			put(14, new int[] { 8, 15 });
+			put(15, new int[] { 14, 21 });
+			put(16, new int[] { 17, 22 });
+			put(17, new int[] { 16, 18 });
+			put(18, new int[] { 12, 17, 24 });
+			put(19, new int[] { 13, 25 });
+			put(20, new int[] { 21 });
+			put(21, new int[] { 15, 20, 22 });
+			put(22, new int[] { 16, 21 });
+			put(23, new int[] { 24 });
+			put(24, new int[] { 18, 23, 30 });
+			put(25, new int[] { 19, 26, 31 });
+			put(26, new int[] { 25, 27 });
+			put(27, new int[] { 26, 33 });
+			put(28, new int[] { 29, 34 });
+			put(29, new int[] { 28 });
+			put(30, new int[] { 24, 36 });
+			put(31, new int[] { 25, 32 });
+			put(32, new int[] { 31 });
+			put(33, new int[] { 27, 34 });
+			put(34, new int[] { 28, 33 });
+			put(35, new int[] { 36 });
+			put(36, new int[] { 30, 35 });
+		}
+	};
+	private Map<Integer, int[]> maze2 = new HashMap<>() {
+		{
+			put(1, new int[] { 2 });
+			put(2, new int[] { 1, 3, 8 });
+			put(3, new int[] { 2 });
+			put(4, new int[] { 5, 10 });
+			put(5, new int[] { 4, 6, 11 });
+			put(6, new int[] { 5 });
+			put(7, new int[] { 8, 13 });
+			put(8, new int[] { 2, 7 });
+			put(9, new int[] { 10, 15 });
+			put(10, new int[] { 4, 9 });
+			put(11, new int[] { 5, 12 });
+			put(12, new int[] { 11, 18 });
+			put(13, new int[] { 7, 19 });
+			put(14, new int[] { 15, 20 });
+			put(15, new int[] { 9, 14 });
+			put(16, new int[] { 17, 22 });
+			put(17, new int[] { 16, 18 });
+			put(18, new int[] { 12, 17, 24 });
+			put(19, new int[] { 13, 20, 25 });
+			put(20, new int[] { 14, 19 });
+			put(21, new int[] { 22, 27 });
+			put(22, new int[] { 16, 21 });
+			put(23, new int[] { 29 });
+			put(24, new int[] { 18, 30 });
+			put(25, new int[] { 19, 31 });
+			put(26, new int[] { 32 });
+			put(27, new int[] { 21, 33 });
+			put(28, new int[] { 29, 34 });
+			put(29, new int[] { 23, 28 });
+			put(30, new int[] { 24, 36 });
+			put(31, new int[] { 25 });
+			put(32, new int[] { 26, 33 });
+			put(33, new int[] { 27, 32 });
+			put(34, new int[] { 28, 35 });
+			put(35, new int[] { 34, 36 });
+			put(36, new int[] { 30, 35 });
+		}
+	};
+	private Map<Integer, int[]> maze3 = new HashMap<>() {
+		{
+			put(1, new int[] { 2, 7 });
+			put(2, new int[] { 1, 3 });
+			put(3, new int[] { 2, 9 });
+			put(4, new int[] { 10 });
+			put(5, new int[] { 6, 11 });
+			put(6, new int[] { 5, 12 });
+			put(7, new int[] { 1 });
+			put(8, new int[] { 14 });
+			put(9, new int[] { 3, 15 });
+			put(10, new int[] { 4, 11 });
+			put(11, new int[] { 5, 10 });
+			put(12, new int[] { 6, 18 });
+			put(13, new int[] { 14, 19 });
+			put(14, new int[] { 8, 13, 20 });
+			put(15, new int[] { 9, 21 });
+			put(16, new int[] { 17, 22 });
+			put(17, new int[] { 16, 23 });
+			put(18, new int[] { 12, 24 });
+			put(19, new int[] { 13, 25 });
+			put(20, new int[] { 14, 26 });
+			put(21, new int[] { 15, 27 });
+			put(22, new int[] { 16, 28 });
+			put(23, new int[] { 17, 29 });
+			put(24, new int[] { 18, 30 });
+			put(25, new int[] { 19, 31 });
+			put(26, new int[] { 20, 27 });
+			put(27, new int[] { 21, 26 });
+			put(28, new int[] { 22, 34 });
+			put(29, new int[] { 23, 35 });
+			put(30, new int[] { 24, 36 });
+			put(31, new int[] { 25, 32 });
+			put(32, new int[] { 31, 33 });
+			put(33, new int[] { 32, 34 });
+			put(34, new int[] { 28, 33 });
+			put(35, new int[] { 29, 36 });
+			put(36, new int[] { 30, 35 });
+		}
+	};
+	private Map<Integer, int[]> maze4 = new HashMap<>() {
+		{
+			put(1, new int[] { 2, 7 });
+			put(2, new int[] { 1, 8 });
+			put(3, new int[] { 4 });
+			put(4, new int[] { 3, 5 });
+			put(5, new int[] { 4, 6 });
+			put(6, new int[] { 5, 12 });
+			put(7, new int[] { 1, 13 });
+			put(8, new int[] { 2, 14 });
+			put(9, new int[] { 10, 15 });
+			put(10, new int[] { 9, 11 });
+			put(11, new int[] { 10, 12 });
+			put(12, new int[] { 6, 11, 18 });
+			put(13, new int[] { 7, 19 });
+			put(14, new int[] { 8, 15 });
+			put(15, new int[] { 9, 14 });
+			put(16, new int[] { 17, 22 });
+			put(17, new int[] { 16 });
+			put(18, new int[] { 12, 24 });
+			put(19, new int[] { 13, 25 });
+			put(20, new int[] { 21 });
+			put(21, new int[] { 20, 22 });
+			put(22, new int[] { 16, 21, 23 });
+			put(23, new int[] { 22, 24 });
+			put(24, new int[] { 18, 30 });
+			put(25, new int[] { 19, 26, 31 });
+			put(26, new int[] { 25, 27 });
+			put(27, new int[] { 26, 28 });
+			put(28, new int[] { 27, 29 });
+			put(29, new int[] { 28, 35 });
+			put(30, new int[] { 24, 36 });
+			put(31, new int[] { 25, 32 });
+			put(32, new int[] { 31, 33 });
+			put(33, new int[] { 32 });
+			put(34, new int[] { 35 });
+			put(35, new int[] { 29, 34 });
+			put(36, new int[] { 30 });
+		}
+	};
+	private Map<Integer, int[]> maze5 = new HashMap<>() {
+		{
+			put(1, new int[] { 2 });
+			put(2, new int[] { 1, 3 });
+			put(3, new int[] { 2, 4 });
+			put(4, new int[] { 3, 5 });
+			put(5, new int[] { 4, 6, 11 });
+			put(6, new int[] { 5, 12 });
+			put(7, new int[] { 8, 13 });
+			put(8, new int[] { 7, 9 });
+			put(9, new int[] { 8, 10 });
+			put(10, new int[] { 9, 11, 16 });
+			put(11, new int[] { 5, 10 });
+			put(12, new int[] { 6 });
+			put(13, new int[] { 7, 14, 19 });
+			put(14, new int[] { 13, 20 });
+			put(15, new int[] { 16 });
+			put(16, new int[] { 10, 15 });
+			put(17, new int[] { 18, 23 });
+			put(18, new int[] { 17, 24 });
+			put(19, new int[] { 13, 25 });
+			put(20, new int[] { 14, 21 });
+			put(21, new int[] { 20, 22 });
+			put(22, new int[] { 21, 28 });
+			put(23, new int[] { 17 });
+			put(24, new int[] { 18, 30 });
+			put(25, new int[] { 19, 31 });
+			put(26, new int[] { 27, 32 });
+			put(27, new int[] { 26, 28 });
+			put(28, new int[] { 22, 27, 29 });
+			put(29, new int[] { 28 });
+			put(30, new int[] { 24, 36 });
+			put(31, new int[] { 25 });
+			put(32, new int[] { 26, 33 });
+			put(33, new int[] { 32, 34 });
+			put(34, new int[] { 33, 35 });
+			put(35, new int[] { 34, 36 });
+			put(36, new int[] { 30, 35 });
+		}
+	};
+	private Map<Integer, int[]> maze6 = new HashMap<>() {
+		{
+			put(1, new int[] { 7 });
+			put(2, new int[] { 3, 8 });
+			put(3, new int[] { 2, 9 });
+			put(4, new int[] { 5 });
+			put(5, new int[] { 4, 6, 11 });
+			put(6, new int[] { 5, 12 });
+			put(7, new int[] { 1, 13 });
+			put(8, new int[] { 2, 14 });
+			put(9, new int[] { 3, 15 });
+			put(10, new int[] { 11, 16 });
+			put(11, new int[] { 5, 10 });
+			put(12, new int[] { 6, 18 });
+			put(13, new int[] { 7, 14, 19 });
+			put(14, new int[] { 8, 13 });
+			put(15, new int[] { 9 });
+			put(16, new int[] { 10, 22 });
+			put(17, new int[] { 18, 23 });
+			put(18, new int[] { 12, 17 });
+			put(19, new int[] { 13, 20 });
+			put(20, new int[] { 19, 26 });
+			put(21, new int[] { 22, 27 });
+			put(22, new int[] { 16, 21, 28 });
+			put(23, new int[] { 17, 29 });
+			put(24, new int[] { 30 });
+			put(25, new int[] { 26, 31 });
+			put(26, new int[] { 20, 25 });
+			put(27, new int[] { 21 });
+			put(28, new int[] { 22, 34 });
+			put(29, new int[] { 23, 30 });
+			put(30, new int[] { 24, 29, 36 });
+			put(31, new int[] { 25, 32 });
+			put(32, new int[] { 31, 33 });
+			put(33, new int[] { 32, 34 });
+			put(34, new int[] { 28, 33 });
+			put(35, new int[] { 36 });
+			put(36, new int[] { 30, 35 });
+		}
+	};
+	private Map<Integer, int[]> maze7 = new HashMap<>() {
+		{
+			put(1, new int[] { 2, 7 });
+			put(2, new int[] { 1, 3 });
+			put(3, new int[] { 2, 4 });
+			put(4, new int[] { 3, 10 });
+			put(5, new int[] { 6, 11 });
+			put(6, new int[] { 5, 12 });
+			put(7, new int[] { 1, 13 });
+			put(8, new int[] { 9, 14 });
+			put(9, new int[] { 8 });
+			put(10, new int[] { 4, 11 });
+			put(11, new int[] { 5, 10 });
+			put(12, new int[] { 6, 18 });
+			put(13, new int[] { 7, 14 });
+			put(14, new int[] { 8, 14 });
+			put(15, new int[] { 16, 21 });
+			put(16, new int[] { 15 });
+			put(17, new int[] { 18, 23 });
+			put(18, new int[] { 12, 17 });
+			put(19, new int[] { 20, 25 });
+			put(20, new int[] { 19, 26 });
+			put(21, new int[] { 15, 22, 27 });
+			put(22, new int[] { 21, 23 });
+			put(23, new int[] { 17, 22 });
+			put(24, new int[] { 30 });
+			put(25, new int[] { 19, 31 });
+			put(26, new int[] { 20 });
+			put(27, new int[] { 21, 28 });
+			put(28, new int[] { 27, 29 });
+			put(29, new int[] { 28, 35 });
+			put(30, new int[] { 24, 36 });
+			put(31, new int[] { 25, 32 });
+			put(32, new int[] { 31, 33 });
+			put(33, new int[] { 32, 34 });
+			put(34, new int[] { 33, 35 });
+			put(35, new int[] { 29, 34, 36 });
+			put(36, new int[] { 30, 35 });
+		}
+	};
+	private Map<Integer, int[]> maze8 = new HashMap<>() {
+		{
+			put(1, new int[] { 7 });
+			put(2, new int[] { 3, 8 });
+			put(3, new int[] { 2, 4 });
+			put(4, new int[] { 3, 10 });
+			put(5, new int[] { 6, 11 });
+			put(6, new int[] { 5, 12 });
+			put(7, new int[] { 1, 8, 13 });
+			put(8, new int[] { 2, 7, 9 });
+			put(9, new int[] { 8 });
+			put(10, new int[] { 4, 11 });
+			put(11, new int[] { 5, 10 });
+			put(12, new int[] { 6, 18 });
+			put(13, new int[] { 7, 19 });
+			put(14, new int[] { 15, 20 });
+			put(15, new int[] { 14, 16 });
+			put(16, new int[] { 15, 17 });
+			put(17, new int[] { 16, 23 });
+			put(18, new int[] { 12, 24 });
+			put(19, new int[] { 13, 25 });
+			put(20, new int[] { 14, 21 });
+			put(21, new int[] { 20, 27 });
+			put(22, new int[] { 23 });
+			put(23, new int[] { 17, 22, 24 });
+			put(24, new int[] { 18, 23 });
+			put(25, new int[] { 19, 31 });
+			put(26, new int[] { 32 });
+			put(27, new int[] { 21, 28 });
+			put(28, new int[] { 27, 29 });
+			put(29, new int[] { 28, 30 });
+			put(30, new int[] { 29 });
+			put(31, new int[] { 25, 32 });
+			put(32, new int[] { 26, 31, 33 });
+			put(33, new int[] { 32, 34 });
+			put(34, new int[] { 33, 35 });
+			put(35, new int[] { 34, 36 });
+			put(36, new int[] { 35 });
+		}
+	};
+	private Map<Integer, int[]> maze9 = new HashMap<>() {
+		{
+			put(1, new int[] { 7 });
+			put(2, new int[] { 3, 8 });
+			put(3, new int[] { 2, 4 });
+			put(4, new int[] { 3, 5 });
+			put(5, new int[] { 4, 6, 11 });
+			put(6, new int[] { 5, 12 });
+			put(7, new int[] { 1, 13 });
+			put(8, new int[] { 2, 14 });
+			put(9, new int[] { 10, 15 });
+			put(10, new int[] { 9 });
+			put(11, new int[] { 5, 17 });
+			put(12, new int[] { 6, 18 });
+			put(13, new int[] { 7, 14, 19 });
+			put(14, new int[] { 8, 13, 15 });
+			put(15, new int[] { 9, 14 });
+			put(16, new int[] { 17, 22 });
+			put(17, new int[] { 11, 16 });
+			put(18, new int[] { 12, 24 });
+			put(19, new int[] { 13, 25 });
+			put(20, new int[] { 26 });
+			put(21, new int[] { 22, 27 });
+			put(22, new int[] { 16, 21 });
+			put(23, new int[] { 24 });
+			put(24, new int[] { 18, 23, 30 });
+			put(25, new int[] { 19, 31 });
+			put(26, new int[] { 20, 32 });
+			put(27, new int[] { 21, 33 });
+			put(28, new int[] { 29, 34 });
+			put(29, new int[] { 28, 35 });
+			put(30, new int[] { 24 });
+			put(31, new int[] { 25, 32 });
+			put(32, new int[] { 31, 26 });
+			put(33, new int[] { 27, 33 });
+			put(34, new int[] { 28, 33 });
+			put(35, new int[] { 29, 36 });
+			put(36, new int[] { 35 });
+		}
+	};
 
-			},
-			maze6,
-			maze7,
-			maze8,
-			maze9;
-
-	// TODO: BFS algorithm to solve the maze
+	private void BFS(int start, int end, Map<Integer, int[]> maze) {
+		// TODO: BFS algorithm to solve the maze
+	}
 
 	@Override
 	public void solve(Indicators indicators) {
