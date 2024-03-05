@@ -10,7 +10,7 @@ public class Maze implements Module {
 	private Set sawSet;
 	private ArrayList<Integer> path;
 	private int flag, start, end;
-	private Map<Integer,int[]> maze;
+	private Map<Integer, int[]> maze;
 	// Representation of the maze as a graph
 	private Map<Integer, int[]> maze1 = new HashMap<>() {
 		{
@@ -373,12 +373,12 @@ public class Maze implements Module {
 		}
 	};
 
-	private void setMaze(){
+	private void setMaze() {
 		System.out.println("Digite a linha de um indicador (1-6):");
-		flag = (Integer.parseInt(Main.LerEntrada())-1) * 6;
+		flag = (Integer.parseInt(Main.LerEntrada()) - 1) * 6;
 		System.out.println("Digite a coluna desse indicador (1-6):");
 		flag += Integer.parseInt(Main.LerEntrada());
-		
+
 		switch (flag) {
 			case 7 -> this.maze = maze1;
 			case 18 -> this.maze = maze1;
@@ -401,8 +401,10 @@ public class Maze implements Module {
 		}
 	}
 
-	private ArrayList<Integer> pathFinder(int start, int end, Map<Integer, int[]> maze, ArrayList<ArrayList<Integer>> matriz) {
-		/*Ideia
+	private ArrayList<Integer> pathFinder(int start, int end, Map<Integer, int[]> maze,
+			ArrayList<ArrayList<Integer>> matriz) {
+		/*
+		 * Ideia
 		 * Conferir se matriz é vazia -> Se sim, inicializa com start
 		 * Conferir todos os vizinhos não visitados e criar path para cada um deles
 		 * Se não tiver vizinhos não vistados -> pop no path
@@ -415,40 +417,42 @@ public class Maze implements Module {
 			sawSet.add(start);
 		}
 
-		for(int i = 0; i < matriz.size(); i++){
+		for (int i = 0; i < matriz.size(); i++) {
 			ArrayList<Integer> path = matriz.get(0);
 			matriz.remove(path);
-			int [] neighbors = maze.get(path.get(path.size()-1));
-			for(int j = 0; j < neighbors.length; j++){
-				if(!sawSet.contains(neighbors[j])){
+			int[] neighbors = maze.get(path.get(path.size() - 1));
+			for (int j = 0; j < neighbors.length; j++) {
+				if (!sawSet.contains(neighbors[j])) {
 					path.add(neighbors[j]);
 					matriz.add(path);
 					path.remove(neighbors[j]);
 					sawSet.add(neighbors[j]);
 				}
 				if (neighbors[j] == end) {
-					return matriz.get(matriz.size()-1);
+					return matriz.get(matriz.size() - 1);
 				}
 			}
 		}
-		 return pathFinder(start, end, maze, matriz);
+		return pathFinder(start, end, maze, matriz);
 	}
 
 	@Override
 	public void solve(Indicators indicators) {
 		setMaze();
-		
+
 		System.out.println("Digite a linha de início (1-6):");
 		start = (Integer.parseInt(Main.LerEntrada()) - 1) * 6;
 		System.out.println("Digite a coluna de início (1-6):");
-		start += Integer.parseInt(Main.LerEntrada()); 
+		start += Integer.parseInt(Main.LerEntrada());
 		System.out.println("Digite a linha de fim (1-6):");
 		end = (Integer.parseInt(Main.LerEntrada()) - 1) * 6;
 		System.out.println("Digite a coluna de fim (1-6):");
-		end += Integer.parseInt(Main.LerEntrada()); 
+		end += Integer.parseInt(Main.LerEntrada());
 
-		path = pathFinder(start,end, maze,matriz);
+		path = pathFinder(start, end, maze, matriz);
 		System.out.println("O caminho é:");
-		// TODO: Show to user the path
+		for (int i = 0; i < path.size(); i++) {
+			System.out.println(path.get(i));
+		}
 	}
 }
