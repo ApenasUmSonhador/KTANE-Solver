@@ -4,10 +4,11 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
+import java.util.HashSet;
 
 public class Maze implements Module {
 	private ArrayList<ArrayList<Integer>> matriz = new ArrayList<>();
-	private Set sawSet;
+	private Set<Integer> sawSet = new HashSet<>();
 	private ArrayList<Integer> path;
 	private int flag, start, end;
 	private Map<Integer, int[]> maze;
@@ -403,37 +404,33 @@ public class Maze implements Module {
 
 	private ArrayList<Integer> pathFinder(int start, int end, Map<Integer, int[]> maze,
 			ArrayList<ArrayList<Integer>> matriz) {
-		/*
-		 * Ideia
-		 * Conferir se matriz é vazia -> Se sim, inicializa com start
-		 * Conferir todos os vizinhos não visitados e criar path para cada um deles
-		 * Se não tiver vizinhos não vistados -> pop no path
-		 * Se chegar no end -> para e retorna o path
-		 * Se não -> Passa para proximo path -> Se chegar no ultimo, repete.
-		 */
 
 		if (matriz.isEmpty()) {
-			matriz.add(new ArrayList<Integer>(start));
+			ArrayList<Integer> startPath = new ArrayList<>();
+			startPath.add(start);
+			matriz.add(startPath);
 			sawSet.add(start);
 		}
 
-		for (int i = 0; i < matriz.size(); i++) {
-			ArrayList<Integer> path = matriz.get(0);
-			matriz.remove(path);
-			int[] neighbors = maze.get(path.get(path.size() - 1));
-			for (int j = 0; j < neighbors.length; j++) {
-				if (!sawSet.contains(neighbors[j])) {
-					path.add(neighbors[j]);
-					matriz.add(path);
-					path.remove(neighbors[j]);
-					sawSet.add(neighbors[j]);
-				}
-				if (neighbors[j] == end) {
-					return matriz.get(matriz.size() - 1);
+		ArrayList<ArrayList<Integer>> newMatriz = new ArrayList<>();
+
+		for (ArrayList<Integer> path : matriz) {
+			int lastNode = path.get(path.size() - 1);
+			int[] neighbors = maze.get(lastNode);
+			for (int neighbor : neighbors) {
+				if (!sawSet.contains(neighbor)) {
+					ArrayList<Integer> newPath = new ArrayList<>(path);
+					newPath.add(neighbor);
+					newMatriz.add(newPath);
+					sawSet.add(neighbor);
+					if (neighbor == end) {
+						return newPath;
+					}
 				}
 			}
 		}
-		return pathFinder(start, end, maze, matriz);
+
+		return pathFinder(start, end, maze, newMatriz);
 	}
 
 	@Override
