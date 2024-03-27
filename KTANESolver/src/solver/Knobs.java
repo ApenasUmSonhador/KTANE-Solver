@@ -11,26 +11,20 @@ package solver;
 public class Knobs implements Module {
 	// Constants to store the knob patterns
 	private static final boolean[][] up = { { false, false, true, true, true, true },
-			{ true, false, false, true, true, true } };
-	private static final boolean[][] down = { { false, true, true, true, true, true },
-			{ true, false, false, true, true, false } };
-	private static final boolean[][] left = { { false, true, false, false, false, false },
-			{ false, false, false, false, false, false } };
-	private static final boolean[][] right = { { true, true, false, true, true, true },
-			{ true, true, false, true, true, true } };
+			{ true, false, false, true, true, true } },
+			down = { { false, true, true, true, true, true },
+					{ true, false, false, true, true, false } },
+			left = { { false, true, false, false, false, false },
+					{ false, false, false, false, false, false } },
+			right = { { true, true, false, true, true, true },
+					{ true, true, false, true, true, true } };
 
 	// Variable to store the knob sequence
 	private boolean[] sequence = new boolean[6];
 
-	// No indicators to set
-	@Override
-	public void setIndicators(Indicators indicators) {
-		// Do nothing
-	}
-
 	// Method to solve the module
 	@Override
-	public void solve() {
+	public void solve(Indicators indicators) {
 		System.out.println("Orientação de cima para baixo e esquerda para a direita.");
 		for (int i = 0; i < 6; i++) {
 			System.out.println("A luz " + (i + 1) + " está acesa (s/n)?");

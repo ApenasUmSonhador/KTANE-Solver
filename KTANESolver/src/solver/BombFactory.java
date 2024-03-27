@@ -32,43 +32,19 @@ public class BombFactory {
             System.out.println("Digite o nome do modulo " + (i + 1) + ":");
             String moduleName = Main.LerEntrada();
             switch (moduleName) {
-                case "button":
-                    modules[i] = new Button();
-                    break;
-                case "complicated":
-                    modules[i] = new Complicated();
-                    break;
-                case "genius":
-                    modules[i] = new Genius();
-                    break;
-                case "Knobs":
-                    modules[i] = new Knobs();
-                    break;
-                case "maze":
-                    modules[i] = new Maze();
-                    break;
-                case "memory":
-                    modules[i] = new Memory();
-                    break;
-                case "morse":
-                    modules[i] = new Morse();
-                    break;
-                case "password":
-                    modules[i] = new Password();
-                    break;
-                case "sequence":
-                    modules[i] = new Sequence();
-                    break;
-                case "wires":
-                    modules[i] = new Wires();
-                    break;
-                case "words":
-                    modules[i] = new Words();
-                    break;
-                default:
-                    System.out.println("Nome do módulo inválido. Por favor, digite novamente.");
-                    i--;
-                    break;
+                case "button" -> modules[i] = new Button();
+                case "complicated" -> modules[i] = new Complicated();
+                case "genius" -> modules[i] = new Genius();
+                case "Knobs" -> modules[i] = new Knobs();
+                case "maze" -> modules[i] = new Maze();
+                case "memory" -> modules[i] = new Memory();
+                case "morse" -> modules[i] = new Morse();
+                case "password" -> modules[i] = new Password();
+                case "sequence" -> modules[i] = new Sequence();
+                case "symbols" -> modules[i] = new Symbols();
+                case "wires" -> modules[i] = new Wires();
+                case "words" -> modules[i] = new Words();
+                default -> System.out.println("Nome do módulo inválido. Por favor, digite novamente. " + i--);
             }
         }
         return modules;

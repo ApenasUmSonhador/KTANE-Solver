@@ -8,14 +8,11 @@ import java.util.HashMap;
  * Capable of storing the number of wires and their colors
  * Capable of solving the module
  * Used in Main to solve the wires module
- * Uses the Indicators class to set the bomb indicators
+ * Uses the Indicators class to know if last digit is odd
  * Uses the Main class to read user input
  */
 
 public class Wires implements Module {
-	// indicator who gonna use in the wire module
-	private boolean lastIsOdd;
-
 	// variables to store the number of wires and their colors
 	private int numberOfWires;
 	private Map<String, Integer> wires = new HashMap<>();
@@ -47,12 +44,7 @@ public class Wires implements Module {
 	}
 
 	@Override
-	public void setIndicators(Indicators indicators) {
-		this.lastIsOdd = !indicators.lastIsEven();
-	}
-
-	@Override
-	public void solve() {
+	public void solve(Indicators indicators) {
 		setWires();
 		// 1. Check the number of wires
 		// 2. Check the colors of the wires
@@ -71,7 +63,7 @@ public class Wires implements Module {
 				}
 				break;
 			case 4:
-				if (wires.get("vermelho") > 1 && lastIsOdd) {
+				if (wires.get("vermelho") > 1 && !indicators.lastIsEven()) {
 					System.out.println("Corte o último fio vermelho.");
 				} else if (lastWire.equals("amarelo") && !wires.containsKey("vermelho")) {
 					System.out.println("Corte o primeiro fio.");
@@ -84,7 +76,7 @@ public class Wires implements Module {
 				}
 				break;
 			case 5:
-				if (lastWire.equals("preto") && lastIsOdd) {
+				if (lastWire.equals("preto") && !indicators.lastIsEven()) {
 					System.out.println("Corte o quarto fio.");
 				} else if (wires.get("vermelho") == 1 && wires.get("amarelo") > 1) {
 					System.out.println("Corte o primeiro fio.");
@@ -95,7 +87,7 @@ public class Wires implements Module {
 				}
 				break;
 			case 6:
-				if (!wires.containsKey("amarelo") && lastIsOdd) {
+				if (!wires.containsKey("amarelo") && !indicators.lastIsEven()) {
 					System.out.println("Corte o terceiro fio.");
 				} else if (wires.get("amarelo") == 1 && wires.get("branco") > 1) {
 					System.out.println("Corte o quarto fio.");

@@ -5,14 +5,14 @@ package solver;
  * Capable of selecting the pattern based on the bomb indicators
  * Capable of solving the module
  * Used in Main to solve the Genius module
- * Uses the Indicators class to set the bomb indicators
+ * Uses the Indicators class to know if the serial has vowel
  * Uses the Main class to read user input
  */
 
 public class Genius implements Module {
-	// Variables to store the bomb indicators
-	private boolean hasVowel;
+	// Variables to store the bomb errors
 	private int errors;
+
 	// Constants to store the color patterns
 	/*
 	 * Sequence logic:
@@ -24,27 +24,20 @@ public class Genius implements Module {
 	 */
 	private static final String[][] patternWithVowel = { { "azul", "vermelho", "amarelo", "verde" },
 			{ "amarelo", "verde", "azul", "vermelho" },
-			{ "verde", "amarelo", "vermelho", "azul" } };
-	private static final String[][] patternWithoutVowel = { { "azul", "amarelo", "verde", "vermelho" },
-			{ "vermelho", "azul", "amarelo", "verde" },
-			{ "amarelo", "verde", "azul", "vermelho" } };
+			{ "verde", "amarelo", "vermelho", "azul" } },
+			patternWithoutVowel = { { "azul", "amarelo", "verde", "vermelho" },
+					{ "vermelho", "azul", "amarelo", "verde" },
+					{ "amarelo", "verde", "azul", "vermelho" } };
 	// Variable to select the correct pattern
 	private String[] pattern;
-	private String sequence = "Aperte: ";
-	private String input;
-
-	// Set the indicators for the module
-	@Override
-	public void setIndicators(Indicators indicators) {
-		hasVowel = indicators.hasVowel();
-	}
+	private String input, sequence = "Aperte: ";
 
 	// Method to solve the module
 	@Override
-	public void solve() {
+	public void solve(Indicators indicators) {
 		System.out.println("Digite o numero de erros: ");
 		errors = Integer.parseInt(System.console().readLine());
-		pattern = hasVowel ? patternWithVowel[errors] : patternWithoutVowel[errors];
+		pattern = indicators.hasVowel() ? patternWithVowel[errors] : patternWithoutVowel[errors];
 		System.out.println("Digite a cor:");
 		input = Main.LerEntrada();
 		while (!input.equals("fim")) {

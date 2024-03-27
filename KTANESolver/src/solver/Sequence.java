@@ -25,8 +25,7 @@ public class Sequence implements Module {
 			put(8, "ab");
 			put(9, "b");
 		}
-	};
-	private static final Map<Integer, String> blueMap = new HashMap<Integer, String>() {
+	}, blueMap = new HashMap<Integer, String>() {
 		{
 			put(1, "b");
 			put(2, "ac");
@@ -38,8 +37,7 @@ public class Sequence implements Module {
 			put(8, "ac");
 			put(9, "a");
 		}
-	};
-	private static final Map<Integer, String> blackMap = new HashMap<Integer, String>() {
+	}, blackMap = new HashMap<Integer, String>() {
 		{
 			put(1, "abc");
 			put(2, "ac");
@@ -54,21 +52,12 @@ public class Sequence implements Module {
 	};
 
 	// Variables to store the wire color and letter
-	private int red = 0;
-	private int blue = 0;
-	private int black = 0;
-	private String color = "";
-	private String letter = "";
-
-	// No indicators to set
-	@Override
-	public void setIndicators(Indicators indicators) {
-		// Do nothing
-	}
+	private int red = 0, blue = 0, black = 0;
+	private String color = "", letter = "";
 
 	// Method to solve the module
 	@Override
-	public void solve() {
+	public void solve(Indicators indicators) {
 		System.out.println("Orientação de cima para baixo");
 		while (!(color.equals("fim") || letter.equals("fim"))) {
 			System.out.println("Digite a nova cor ou 'fim' para concluir:");

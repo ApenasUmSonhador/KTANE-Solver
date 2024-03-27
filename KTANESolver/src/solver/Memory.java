@@ -17,12 +17,6 @@ public class Memory implements Module {
 	private int[][] matrix = new int[4][2];
 	private int display;
 
-	// Method to set the bomb indicators
-	@Override
-	public void setIndicators(Indicators indicators) {
-		// Do nothing
-	}
-
 	// Shows the instructions to press a position
 	private void pressByPosition(int position) {
 		System.out.println("Digite o número da posição " + position + " e aperte ele:");
@@ -35,7 +29,7 @@ public class Memory implements Module {
 
 	// Method to solve the module
 	@Override
-	public void solve() {
+	public void solve(Indicators indicators) {
 		// Stage 1
 		System.out.println("Digite o número do display:");
 		display = Integer.parseInt(Main.LerEntrada());
@@ -136,18 +130,10 @@ public class Memory implements Module {
 		System.out.println("Digite o número do display:");
 		display = Integer.parseInt(Main.LerEntrada());
 		switch (display) {
-			case 1:
-				System.out.println("Pressione o número " + matrix[0][1]);
-				break;
-			case 2:
-				System.out.println("Pressione o número " + matrix[1][1]);
-				break;
-			case 3:
-				System.out.println("Pressione o número " + matrix[3][1]);
-				break;
-			case 4:
-				System.out.println("Precione o número " + matrix[2][1]);
-				break;
+			case 1 -> System.out.println("Pressione o número " + matrix[0][1]);
+			case 2 -> System.out.println("Pressione o número " + matrix[1][1]);
+			case 3 -> System.out.println("Pressione o número " + matrix[3][1]);
+			case 4 -> System.out.println("Precione o número " + matrix[2][1]);
 		}
 	}
 
