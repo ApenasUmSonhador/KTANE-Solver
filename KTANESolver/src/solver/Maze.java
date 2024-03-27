@@ -419,10 +419,10 @@ public class Maze implements Module {
 			int[] neighbors = maze.get(lastNode);
 			for (int neighbor : neighbors) {
 				if (!sawSet.contains(neighbor)) {
+					sawSet.add(neighbor);
 					ArrayList<Integer> newPath = new ArrayList<>(path);
 					newPath.add(neighbor);
 					newMatriz.add(newPath);
-					sawSet.add(neighbor);
 					if (neighbor == end) {
 						return newPath;
 					}
@@ -448,8 +448,16 @@ public class Maze implements Module {
 
 		path = pathFinder(start, end, maze, matriz);
 		System.out.println("O caminho é:");
-		for (int i = 0; i < path.size(); i++) {
-			System.out.println(path.get(i));
+		int start = path.get(0);
+		for (int i = 1; i < path.size(); i++) {
+			switch (path.get(i) - start) {
+				case 1 -> System.out.println("Direita");
+				case -1 -> System.out.println("Esquerda");
+				case 6 -> System.out.println("Baixo");
+				case -6 -> System.out.println("Cima");
+			}
+			start = path.get(i);
 		}
 	}
+
 }
