@@ -12,20 +12,22 @@ import java.util.Scanner;
  */
 
 public class Main {
+	// Scanner to read user input
+	private static final Scanner sc = new Scanner(System.in);
 
+	// Method to read user input
 	public static String LerEntrada() {
-		try (Scanner sc = new Scanner(System.in)) {
-			return sc.nextLine().trim().toLowerCase();
-		}
+		return sc.nextLine().trim().toLowerCase();
 	}
 
+	// Main method to solve the bomb
 	public static void main(String[] args) {
 
 		// Set the bomb indicators
-		Indicators indicators = BombFactory.createIndicators();
+		Indicators indicators = BombFactory.setIndicators();
 
 		// Set the bomb modules
-		Module[] modules = BombFactory.createModules();
+		Module[] modules = BombFactory.setModules();
 
 		// Solve the bomb modules
 		for (Module module : modules) {

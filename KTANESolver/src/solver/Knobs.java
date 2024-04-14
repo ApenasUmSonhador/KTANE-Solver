@@ -8,7 +8,7 @@ package solver;
  * Uses the Main class to read user input
  */
 
-public class Knobs implements Module {
+public class Knobs extends Needer implements Module {
 	// Constants to store the knob patterns
 	private static final boolean[][] up = { { false, false, true, true, true, true },
 			{ true, false, false, true, true, true } },

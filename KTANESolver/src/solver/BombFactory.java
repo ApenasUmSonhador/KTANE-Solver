@@ -1,8 +1,13 @@
 package solver;
 
+import java.util.ArrayList;
+
 public class BombFactory {
-    public static Indicators createIndicators() {
-        // Set the bomb indicators
+    private static ArrayList<Module> needers = new ArrayList<>();
+    private static ArrayList<Module> notNeeders = new ArrayList<>();
+
+    // Set indicators for the bomb
+    public static Indicators setIndicators() {
         System.out.println("Digite o serial da bomba:");
 
         String serial = Main.LerEntrada();
@@ -23,29 +28,53 @@ public class BombFactory {
         return indicators;
     }
 
-    // Set the bomb modules
-    public static Module[] createModules() {
+    // Detect needer modules in the bomb
+    private static void detectNeeder(Module module) {
+        if (module instanceof Needer) {
+            needers.add(module);
+        } else {
+            notNeeders.add(module);
+        }
+    }
+
+    // Create modules to be solved
+    private static void createModules() {
         System.out.println("Digite o numero de modulos:");
         int n = Integer.parseInt(Main.LerEntrada());
-        Module[] modules = new Module[n];
         for (int i = 0; i < n; i++) {
             System.out.println("Digite o nome do modulo " + (i + 1) + ":");
             String moduleName = Main.LerEntrada();
             switch (moduleName) {
-                case "button" -> modules[i] = new Button();
-                case "complicated" -> modules[i] = new Complicated();
-                case "genius" -> modules[i] = new Genius();
-                case "Knobs" -> modules[i] = new Knobs();
-                case "maze" -> modules[i] = new Maze();
-                case "memory" -> modules[i] = new Memory();
-                case "morse" -> modules[i] = new Morse();
-                case "password" -> modules[i] = new Password();
-                case "sequence" -> modules[i] = new Sequence();
-                case "symbols" -> modules[i] = new Symbols();
-                case "wires" -> modules[i] = new Wires();
-                case "words" -> modules[i] = new Words();
-                default -> System.out.println("Nome do módulo inválido. Por favor, digite novamente. " + i--);
+                case "button" -> detectNeeder(new Button());
+                case "complicated" -> detectNeeder(new Complicated());
+                case "genius" -> detectNeeder(new Genius());
+                case "knobs" -> detectNeeder(new Knobs());
+                case "maze" -> detectNeeder(new Maze());
+                case "memory" -> detectNeeder(new Memory());
+                case "morse" -> detectNeeder(new Morse());
+                case "password" -> detectNeeder(new Password());
+                case "sequence" -> detectNeeder(new Sequence());
+                case "symbols" -> detectNeeder(new Symbols());
+                case "wires" -> detectNeeder(new Wires());
+                case "words" -> detectNeeder(new Words());
+                default -> System.out.println(--i + ": Nome do módulo inválido. Por favor, digite novamente. ");
             }
+        }
+    }
+
+    // Set modules order to be solved
+    public static Module[] setModules() {
+        createModules();
+        int needersSpaces = (notNeeders.size() - 1) * needers.size();
+        Module[] modules = new Module[notNeeders.size() + needersSpaces];
+        modules[0] = notNeeders.get(0);
+        notNeeders.remove(0);
+        int contador = 1;
+        for (Module notNeeder : notNeeders) {
+            for (Module needer : needers) {
+                modules[contador++] = needer;
+            }
+            modules[contador++] = notNeeder;
         }
         return modules;
     }
