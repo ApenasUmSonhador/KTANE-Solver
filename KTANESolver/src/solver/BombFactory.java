@@ -1,10 +1,11 @@
 package solver;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BombFactory {
-    private static ArrayList<Module> needers = new ArrayList<>();
-    private static ArrayList<Module> notNeeders = new ArrayList<>();
+    private static List<Module> needers = new ArrayList<>();
+    private static List<Module> notNeeders = new ArrayList<>();
 
     // Set indicators for the bomb
     public static Indicators setIndicators() {

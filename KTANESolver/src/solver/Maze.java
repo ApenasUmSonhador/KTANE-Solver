@@ -5,11 +5,12 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.List;
 
 public class Maze implements Module {
-	private ArrayList<ArrayList<Integer>> matriz = new ArrayList<>();
+	private List<List<Integer>> matriz = new ArrayList<>();
 	private Set<Integer> sawSet = new HashSet<>();
-	private ArrayList<Integer> path;
+	private List<Integer> path;
 	private int flag, start, end;
 	private Map<Integer, int[]> maze;
 	// Representation of the maze as a graph
@@ -402,25 +403,25 @@ public class Maze implements Module {
 		}
 	}
 
-	private ArrayList<Integer> pathFinder(int start, int end, Map<Integer, int[]> maze,
-			ArrayList<ArrayList<Integer>> matriz) {
+	private List<Integer> pathFinder(int start, int end, Map<Integer, int[]> maze,
+			List<List<Integer>> matriz) {
 
 		if (matriz.isEmpty()) {
-			ArrayList<Integer> startPath = new ArrayList<>();
+			List<Integer> startPath = new ArrayList<>();
 			startPath.add(start);
 			matriz.add(startPath);
 			sawSet.add(start);
 		}
 
-		ArrayList<ArrayList<Integer>> newMatriz = new ArrayList<>();
+		List<List<Integer>> newMatriz = new ArrayList<>();
 
-		for (ArrayList<Integer> path : matriz) {
+		for (List<Integer> path : matriz) {
 			int lastNode = path.get(path.size() - 1);
 			int[] neighbors = maze.get(lastNode);
 			for (int neighbor : neighbors) {
 				if (!sawSet.contains(neighbor)) {
 					sawSet.add(neighbor);
-					ArrayList<Integer> newPath = new ArrayList<>(path);
+					List<Integer> newPath = new ArrayList<>(path);
 					newPath.add(neighbor);
 					newMatriz.add(newPath);
 					if (neighbor == end) {
